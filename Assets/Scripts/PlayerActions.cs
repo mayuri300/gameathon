@@ -15,6 +15,7 @@ public class PlayerActions : MonoBehaviour
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
+    private Animator myAnim;
 
 
 
@@ -28,6 +29,7 @@ public class PlayerActions : MonoBehaviour
     {
         ToggleBTN.onClick.AddListener(ToggleInput);
         inputMode = InputType.Keyboard;
+        myAnim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -88,6 +90,7 @@ public class PlayerActions : MonoBehaviour
         float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothVelocity, RotationSpeed);
 
+         myAnim.SetFloat("speed", movementDirection.magnitude);
         if (movementDirection.magnitude > 0f)
         {
              this.transform.position += movementVector;
