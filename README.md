@@ -1,2 +1,2 @@
 # gameathon
-a gaming app by "gun's and roses team"
+A gaming app by team "guns N' roses"
