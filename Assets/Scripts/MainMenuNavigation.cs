@@ -44,8 +44,8 @@ public class MainMenuNavigation : MonoBehaviour
             //display loading text and progress
             LoadingPanel.gameObject.SetActive(true);
             LoadingProgressText.text = "Loading : " + (ao.progress * 100) + "%";
-            yield return new WaitForSeconds(2f); //remove later
-            if(ao.progress >= 0.97f)
+            yield return new WaitForSeconds(2f);
+            if(ao.progress >= 0.9f)
             {
                 ao.allowSceneActivation = true;
             }

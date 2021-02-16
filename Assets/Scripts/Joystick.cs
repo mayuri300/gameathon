@@ -30,7 +30,7 @@ public class Joystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPointerDow
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        joyBG.rectTransform.anchoredPosition = Camera.main.ScreenToWorldPoint(eventData.position);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -44,11 +44,29 @@ public class Joystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPointerDow
     {
         joyBG = GetComponent<Image>();
         joyPad = transform.GetChild(0).GetComponent<Image>();
+        
     }
 
     void Update()
     {
-        Debug.Log(JoyPadInputVector);
+        int touchCount = Input.touchCount;
+        if (touchCount >=1)
+        {
+            Touch t = Input.GetTouch(0);
+            TouchPhase phase = t.phase;
+            switch (phase)
+            {
+                case TouchPhase.Began:
+                    joyBG.gameObject.SetActive(true);
+                    joyBG.transform.position = t.position;
+                    break;
+                case TouchPhase.Ended:
+                   // joyBG.gameObject.SetActive(false);
+                    break;
+                case TouchPhase.Canceled:
+                    break;
+            }
+        }
     }
 
 }

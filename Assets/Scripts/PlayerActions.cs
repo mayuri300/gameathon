@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum InputType { Keyboard, JoyStick}
 public class PlayerActions : MonoBehaviour
@@ -72,6 +73,8 @@ public class PlayerActions : MonoBehaviour
         if (!isSafe)
         {
             HpFill.fillAmount -= Time.deltaTime * 0.1f;
+            if (HpFill.fillAmount <= 0)
+                SceneManager.LoadScene(2);
         }
         if(inputMode == InputType.Keyboard)
         {
