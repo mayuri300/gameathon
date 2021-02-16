@@ -7,19 +7,20 @@ using UnityEngine.SceneManagement;
 public enum InputType { Keyboard, JoyStick}
 public class PlayerActions : MonoBehaviour
 {
+    [Header("UI Stuff")]
     public Button ToggleBTN;
     public Image HpFill;
+    public Joystick Joystick;
+    [Header("Player Data")]
     public float Speed;
     public float RotationSpeed;
+    public float SenseRadius;
     public InputType inputMode;
-    public Joystick Joystick;
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
     private Animator myAnim;
-
-
-
+    private int CivilianLayer { get {  return 1 << LayerMask.NameToLayer("Civilian"); } }
     private float smoothVelocity;
     private float horizontal;
     private float vertical;
@@ -52,6 +53,12 @@ public class PlayerActions : MonoBehaviour
             isSafe = false;
             Debug.Log("EXITED SAFE ZONE!");
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, SenseRadius);
     }
     private void ToggleInput()
     {
@@ -100,6 +107,12 @@ public class PlayerActions : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         }
-        
+
+        Collider[] colls = Physics.OverlapSphere(this.transform.position, SenseRadius, CivilianLayer);
+        if (colls.Length >= 0)
+        {
+            Debug.Log("Colliders Found : " + colls.Length);
+            colls[0].GetComponent<MeshRenderer>().material.color = Color.red;
+        }
     }
 }
