@@ -8,15 +8,10 @@ public class UiQuizPanel : MonoBehaviour
 {
     public TMP_Text Question;
     public Button[] Options;
-    private int correctAnswer;
+    public int correctAnswer;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject, 10f);
-        foreach(Button x in Options)
-        {
-            x.onClick.AddListener(OnOptionClick);
-        }
     }
     private void OnDestroy()
     {
@@ -25,23 +20,13 @@ public class UiQuizPanel : MonoBehaviour
             x.onClick.RemoveAllListeners();
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void SetQuestion(int indexer)
-    {
-        correctAnswer = GameManager.Instance.Quiz[indexer].quiz.CorrectOption;
-        Question.text = GameManager.Instance.Quiz[indexer].quiz.Question;
-        for(int i = 0; i <= Options.Length-1; i++)
-        {
-            Options[i].GetComponentInChildren<TMP_Text>().text = GameManager.Instance.Quiz[indexer].quiz.Options[i];
-        }
-    }
 
-    public void OnOptionClick()
+    public void OnOptionClick(Button butt)
     {
-        Debug.Log("CLICKED OPTIONS");
+        string k = butt.gameObject.name;
+        Debug.Log("Button Clicked : " + k);
+        Destroy(this.gameObject);
+
+       
     }
 }

@@ -153,16 +153,10 @@ MonoBehaviour:
   MutationText: {fileID: 1420335415}
   ContributionText: {fileID: 245565770}
   Quiz:
-  - quiz: {fileID: 11400000, guid: 4a43a4adbfd7b2547829dcc61fa7320c, type: 2}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
-  - quiz: {fileID: 0}
+  - Type: 0
+    quiz: {fileID: 11400000, guid: 4a43a4adbfd7b2547829dcc61fa7320c, type: 2}
+  - Type: 1
+    quiz: {fileID: 11400000, guid: 00810dace16ebee4ca17759b4bdda45a, type: 2}
   QuizPanel: {fileID: 6941951710317584089, guid: d28ab90b7cd392248bb36e9852c45b63,
     type: 3}
   WorldCanvas: {fileID: 648126138}
@@ -907,6 +901,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598660437}
   m_CullTransparentMesh: 0
+--- !u!1 &600516603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600516608}
+  - component: {fileID: 600516607}
+  - component: {fileID: 600516606}
+  - component: {fileID: 600516605}
+  - component: {fileID: 600516604}
+  m_Layer: 0
+  m_Name: SafeZone (1)
+  m_TagString: Finish
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &600516604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600516603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b28ebddf15279a43829aee159b2bd8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+--- !u!65 &600516605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600516603}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &600516606
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600516603}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 21cb3b5325a907143888e5b74012f029, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &600516607
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600516603}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &600516608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600516603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.81, y: 0.47, z: 2.67}
+  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &648126138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1274,7 @@ GameObject:
   - component: {fileID: 932420217}
   - component: {fileID: 932420216}
   - component: {fileID: 932420215}
+  - component: {fileID: 932420219}
   m_Layer: 0
   m_Name: SafeZone
   m_TagString: Finish
@@ -1254,6 +1356,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &932420219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932420214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b28ebddf15279a43829aee159b2bd8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
 --- !u!1 &976510392
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3173,7 @@ MonoBehaviour:
   RotationSpeed: 0.1
   SenseRadius: 5
   inputMode: 0
+  Qtype: 0
 --- !u!54 &2032804773
 Rigidbody:
   m_ObjectHideFlags: 0

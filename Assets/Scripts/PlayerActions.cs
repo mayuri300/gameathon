@@ -16,6 +16,7 @@ public class PlayerActions : MonoBehaviour
     public float RotationSpeed;
     public float SenseRadius;
     public InputType inputMode;
+    public QuestionType Qtype;
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
@@ -26,6 +27,7 @@ public class PlayerActions : MonoBehaviour
     private float vertical;
 
     private bool isSafe = false;
+
 
     private void Awake()
     {
@@ -44,7 +46,8 @@ public class PlayerActions : MonoBehaviour
         {
             isSafe = true;
             Debug.Log("HIT TRIGGER!");
-            GameManager.Instance.InstantiateQuiz(0);
+            Qtype = other.GetComponent<FrontLineTrigger>().Type;
+            GameManager.Instance.InstantiateQuiz(Qtype);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -112,7 +115,7 @@ public class PlayerActions : MonoBehaviour
         Collider[] colls = Physics.OverlapSphere(this.transform.position, SenseRadius, CivilianLayer);
         if (colls.Length >= 0)
         {
-            Debug.Log("Colliders Found : " + colls.Length);
+            //Debug.Log("Colliders Found : " + colls.Length);
             foreach(Collider  x in colls)
             {
                 x.GetComponent<MeshRenderer>().material.color = Color.red;

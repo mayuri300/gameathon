@@ -5,13 +5,19 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+public enum QuestionType { Level0=0,Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10};
 public class GameManager : MonoBehaviour
 {
+    private Dictionary<QuestionType, QuizData> _Qbank = new Dictionary<QuestionType, QuizData>();
     public static GameManager Instance { private set; get; }
 
     private void Awake()
     {
         Instance = this;
+        foreach(QuizData x in Quiz)
+        {
+            _Qbank[x.Type] = x;
+        }
     }
     private void OnDestroy()
     {
@@ -27,7 +33,6 @@ public class GameManager : MonoBehaviour
     public QuizData[] Quiz;
     public GameObject QuizPanel;
     public GameObject WorldCanvas;
-    public GameObject InstantiatedQuiz = null;
 
     public void IncreaseMutation(int amount)
     {
@@ -41,18 +46,28 @@ public class GameManager : MonoBehaviour
     {
         ContributionText.text = string.Format("{0}/10", amount);
     }
-    public  void InstantiateQuiz(int quizIndexer)
+    public  void InstantiateQuiz(QuestionType type) //Called on Trigger Enter
     {
-        QuizData data;
         //instantiate panel
-        Instantiate(QuizPanel, WorldCanvas.transform);
+        GameObject InstantiatedQuiz = Instantiate(QuizPanel, WorldCanvas.transform);
         //QuizPanel.transform.SetParent(WorldCanvas.transform, false);
         //Get quiz from
-        QuizPanel.GetComponent<UiQuizPanel>().SetQuestion(quizIndexer);
+        QuizData data;
+        if(_Qbank.TryGetValue(type, out data))
+        {
+            UiQuizPanel panel = InstantiatedQuiz.GetComponent<UiQuizPanel>();
+            panel.Question.text = data.quiz.Question;
+            panel.correctAnswer = data.quiz.CorrectOption;
+            for(int i =0; i <= panel.Options.Length - 1; i++)
+            {
+                panel.Options[i].GetComponentInChildren<TMP_Text>().text = data.quiz.Options[i];
+            }
+        }
     }
 }
 [System.Serializable]
 public class QuizData
 {
+    public QuestionType Type;
     public QuizScriptable quiz;
 }
