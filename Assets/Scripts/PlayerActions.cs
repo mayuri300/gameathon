@@ -48,6 +48,7 @@ public class PlayerActions : MonoBehaviour
             Debug.Log("HIT TRIGGER!");
             Qtype = other.GetComponent<FrontLineTrigger>().Type;
             GameManager.Instance.InstantiateQuiz(Qtype);
+            Core.BroadcastEvent("OnSendType", this, this.Qtype);
         }
     }
     private void OnTriggerExit(Collider other)
