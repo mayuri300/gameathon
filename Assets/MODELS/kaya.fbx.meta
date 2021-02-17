@@ -6,7 +6,47 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: mixamo.com
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Character_Rasta_boy_body
+    second: {fileID: 2100000, guid: c1f7245db353970499b49c7a80961b40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rasta_Brows_MAT1
+    second: {fileID: 2100000, guid: b8e0c782893c37744a1a0efaac3cd496, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rasta_Eyes_MAT1
+    second: {fileID: 2100000, guid: cd80d041ca852264d9e626f3ea3e7fdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rasta_Mouth_MAT1
+    second: {fileID: 2100000, guid: fed8da18fa0508742a708a3637a50675, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: OccupyGuy_FaceAnimMap
+    second: {fileID: 2800000, guid: 04d0fcca76dc49f4e8d14ed5a2979fb7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: OccupyGuy_diffuse
+    second: {fileID: 2800000, guid: 7fe779e15ac9a65418e93dcba4417661, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: OccupyGuy_normal
+    second: {fileID: 2800000, guid: e2b89dca6272aa747afbd4757a190d03, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: OccupyGuy_spec
+    second: {fileID: 2800000, guid: 8bd165633b2d69e4884642bb092de8c6, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

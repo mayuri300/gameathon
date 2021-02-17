@@ -44,6 +44,7 @@ public class PlayerActions : MonoBehaviour
         {
             isSafe = true;
             Debug.Log("HIT TRIGGER!");
+            GameManager.Instance.InstantiateQuiz(0);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -112,7 +113,11 @@ public class PlayerActions : MonoBehaviour
         if (colls.Length >= 0)
         {
             Debug.Log("Colliders Found : " + colls.Length);
-            colls[0].GetComponent<MeshRenderer>().material.color = Color.red;
+            foreach(Collider  x in colls)
+            {
+                x.GetComponent<MeshRenderer>().material.color = Color.red;
+
+            }
         }
     }
 }
