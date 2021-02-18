@@ -116,12 +116,8 @@ public class PlayerActions : MonoBehaviour
         Collider[] colls = Physics.OverlapSphere(this.transform.position, SenseRadius, CivilianLayer);
         if (colls.Length >= 0)
         {
-            //Debug.Log("Colliders Found : " + colls.Length);
-            foreach(Collider  x in colls)
-            {
-                x.GetComponent<MeshRenderer>().material.color = Color.red;
-
-            }
+            //Found a Civilian in range
+            //Increase Mutation Points from GameManager
         }
     }
 }

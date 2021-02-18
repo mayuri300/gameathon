@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseMutation(int amount)
     {
-        MutationText.text = string.Format("{0}/10", amount);
+        mutationPoints += amount;
+        MutationText.text = string.Format("{0}/10", mutationPoints);
         if (amount >= 10)
         {
             SceneManager.LoadScene(2);
@@ -44,7 +45,8 @@ public class GameManager : MonoBehaviour
     }
     public void IncreaseContribution(int amount)
     {
-        ContributionText.text = string.Format("{0}/10", amount);
+        contributionPoints += amount;
+        ContributionText.text = string.Format("{0}/10", contributionPoints);
     }
     public  void InstantiateQuiz(QuestionType type) //Called on Trigger Enter
     {
