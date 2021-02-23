@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public QuizData[] Quiz;
     public GameObject QuizPanel;
     public GameObject WorldCanvas;
+    public QuizData InstantiatedQuizData = null;
 
     public void IncreaseMutation(int amount)
     {
@@ -54,15 +55,15 @@ public class GameManager : MonoBehaviour
         GameObject InstantiatedQuiz = Instantiate(QuizPanel, WorldCanvas.transform);
         //QuizPanel.transform.SetParent(WorldCanvas.transform, false);
         //Get quiz from
-        QuizData data;
-        if(_Qbank.TryGetValue(type, out data))
+        //QuizData data;
+        if(_Qbank.TryGetValue(type, out InstantiatedQuizData))
         {
             UiQuizPanel panel = InstantiatedQuiz.GetComponent<UiQuizPanel>();
-            panel.Question.text = data.quiz.Question;
-            panel.correctAnswer = data.quiz.CorrectOption;
+            panel.Question.text = InstantiatedQuizData.quiz.Question;
+            panel.correctAnswer = InstantiatedQuizData.quiz.CorrectOption;
             for(int i =0; i <= panel.Options.Length - 1; i++)
             {
-                panel.Options[i].GetComponentInChildren<TMP_Text>().text = data.quiz.Options[i];
+                panel.Options[i].GetComponentInChildren<TMP_Text>().text = InstantiatedQuizData.quiz.Options[i];
             }
         }
     }

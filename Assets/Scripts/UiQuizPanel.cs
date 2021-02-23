@@ -35,7 +35,17 @@ public class UiQuizPanel : MonoBehaviour
     public void OnOptionClick(Button butt)
     {
         string k = butt.gameObject.name;
-        Debug.Log("Button Clicked : " + k + " Type of this Collision : " + type);
+        string m = GameManager.Instance.InstantiatedQuizData.quiz.CorrectOption.ToString();
+        //Debug.Log("Button Clicked : " + k + " Type of this Collision : " + type +" Instantiated data Correctopt : " + m);
+        if(k == m)
+        {
+            Debug.Log("Correct Answer!!");
+            GameManager.Instance.IncreaseContribution(1);
+        }
+        else
+        {
+            Debug.LogError("Wrong Answer!");
+        }
         Destroy(this.gameObject);
 
     }

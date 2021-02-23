@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451158aefcd15fd48804e84aed1200b3, type: 3}
   m_Name: Quiz1
   m_EditorClassIdentifier: 
-  Question: Who is you celeb crush
+  Type: 1
+  Question: What is the fourth planet in our Solar System?
   Options:
-  - Kendal Jenner
-  - Emma Stone
-  - Mila Kunis
-  CorrectOption: 2
+  - Venus
+  - Mars
+  - Jupiter
+  CorrectOption: 1

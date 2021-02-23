@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 451158aefcd15fd48804e84aed1200b3, type: 3}
-  m_Name: Quiz2
+  m_Name: Quiz0
   m_EditorClassIdentifier: 
-  Type: 2
-  Question: How many sides are there in a Octagon
+  Type: 0
+  Question: Who is you celeb crush
   Options:
-  - 8
-  - 6
-  - 5
-  CorrectOption: 0
+  - Kendal Jenner
+  - Emma Stone
+  - Mila Kunis
+  CorrectOption: 2
