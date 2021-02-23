@@ -11,6 +11,8 @@ public class PlayerActions : MonoBehaviour
     public Button ToggleBTN;
     public Image HpFill;
     public Joystick Joystick;
+    public Image InfectionTimerFill;
+    public Image Infection;
     [Header("Player Data")]
     public float Speed;
     public float RotationSpeed;
@@ -27,6 +29,9 @@ public class PlayerActions : MonoBehaviour
     private float vertical;
 
     private bool isSafe = false;
+    private float infectionSpeed = 1f;
+    private bool foundCivilian = false;
+
 
 
     private void Awake()
@@ -78,13 +83,37 @@ public class PlayerActions : MonoBehaviour
             ToggleBTN.GetComponentInChildren<Text>().text = "Keyboard!";
         }
     }
+    public void EnableInfectionUI(bool foundCivilian,Collider[] civilian)
+    {
 
+            foundCivilian = true;
+            if (foundCivilian)
+            {
+
+                Infection.gameObject.SetActive(true);
+                InfectionTimerFill.gameObject.SetActive(true);
+                infectionSpeed -= Time.deltaTime;
+                InfectionTimerFill.fillAmount = infectionSpeed;         
+            }
+        if (infectionSpeed <= 0)
+        {
+            Infection.gameObject.SetActive(false);
+            InfectionTimerFill.gameObject.SetActive(false);
+            infectionSpeed = 1f;
+            foundCivilian = false;
+            foreach(Collider x in civilian)
+            {
+                x.GetComponent<CivilianLogic>().GetInfected();
+            }
+        }
+            
+    }
     // Update is called once per frame
     void Update()
     {
         if (!isSafe)
         {
-            HpFill.fillAmount -= Time.deltaTime * 0.1f;
+            HpFill.fillAmount -= Time.deltaTime * 0.01f;
             if (HpFill.fillAmount <= 0)
                 SceneManager.LoadScene(2);
         }
@@ -114,10 +143,19 @@ public class PlayerActions : MonoBehaviour
         }
 
         Collider[] colls = Physics.OverlapSphere(this.transform.position, SenseRadius, CivilianLayer);
-        if (colls.Length >= 0)
+        if (colls.Length >0)
         {
             //Found a Civilian in range
             //Increase Mutation Points from GameManager
+            EnableInfectionUI(foundCivilian, colls);
         }
+        else
+        {
+            foundCivilian = false;
+            Infection.gameObject.SetActive(false);
+            InfectionTimerFill.gameObject.SetActive(false);
+            infectionSpeed = 1f;
+        }
+
     }
 }
