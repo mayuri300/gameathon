@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Quiz2
   m_EditorClassIdentifier: 
   Type: 2
-  Question: How many sides are there in a Octagon
+  Question: The first case of corona virus was identified in...?
   Options:
-  - 8
-  - 6
-  - 5
-  CorrectOption: 0
+  - Tianjin
+  - Wuhan, Hubei
+  - Beijing
+  CorrectOption: 1

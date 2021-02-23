@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Quiz0
   m_EditorClassIdentifier: 
   Type: 0
-  Question: Who is you celeb crush
+  Question: WHO on 11 feb 2020 announced an official name for the disease that is
+    causing the 2019 novel coronavirus outbreak? what is the new name of the disease
   Options:
-  - Kendal Jenner
-  - Emma Stone
-  - Mila Kunis
-  CorrectOption: 2
+  - COVID-19
+  - COnV-20
+  - COVn-19
+  CorrectOption: 0

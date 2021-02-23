@@ -50,10 +50,8 @@ public class PlayerActions : MonoBehaviour
         if (other.tag == "Finish")
         {
             isSafe = true;
-            Debug.Log("HIT TRIGGER!");
             Qtype = other.GetComponent<FrontLineTrigger>().Type;
             GameManager.Instance.InstantiateQuiz(Qtype);
-            Core.BroadcastEvent("OnSendType", this, this.Qtype);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -61,7 +59,6 @@ public class PlayerActions : MonoBehaviour
         if(other.tag == "Finish")
         {
             isSafe = false;
-            Debug.Log("EXITED SAFE ZONE!");
         }
     }
 

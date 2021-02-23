@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Quiz1
   m_EditorClassIdentifier: 
   Type: 1
-  Question: What is the fourth planet in our Solar System?
+  Question: Which of the following disease are related to Corona Virus?
   Options:
-  - Venus
-  - Mars
-  - Jupiter
-  CorrectOption: 1
+  - SARS
+  - MERS
+  - Both
+  CorrectOption: 2

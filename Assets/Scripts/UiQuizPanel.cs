@@ -15,13 +15,10 @@ public class UiQuizPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Core.SubscribeEvent("OnSendType", OnReceiveType);
+
     }
 
-    private void OnReceiveType(object sender, object[] args)
-    {
-        type = (QuestionType)args[0];
-    }
+
 
     private void OnDestroy()
     {
@@ -29,7 +26,6 @@ public class UiQuizPanel : MonoBehaviour
         {
             x.onClick.RemoveAllListeners();
         }
-        Core.UnsubscribeEvent("OnSendType", OnReceiveType);
     }
 
     public void OnOptionClick(Button butt)
