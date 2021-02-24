@@ -11,6 +11,10 @@ public class MainMenuNavigation : MonoBehaviour
     public Image LoadingPanel;
     public Text LoadingProgressText;
 
+    private void Awake()
+    {
+        AudioManager.Instance.PlayMusic(MusicEffectsType.MainMenu);
+    }
     // Start is called before the first frame update
     void Start()
     {

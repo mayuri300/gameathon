@@ -52,6 +52,7 @@ public class PlayerActions : MonoBehaviour
             isSafe = true;
             Qtype = other.GetComponent<FrontLineTrigger>().Type;
             GameManager.Instance.InstantiateQuiz(Qtype);
+            AudioManager.Instance.PlaySound(SoundEffectsType.PopUP, this.transform.position);
         }
     }
     private void OnTriggerExit(Collider other)

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         {
             _Qbank[x.Type] = x;
         }
+        AudioManager.Instance.PlayMusic(MusicEffectsType.GamePlay, true); //TO Play Sounds when Game Loads
     }
     private void OnDestroy()
     {
