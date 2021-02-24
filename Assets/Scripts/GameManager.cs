@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     [Header("QuizData")]
     public QuizData[] Quiz;
     public GameObject QuizPanel;
+    public GameObject TipPanel;
     public GameObject WorldCanvas;
     public QuizData InstantiatedQuizData = null;
 
@@ -66,6 +67,16 @@ public class GameManager : MonoBehaviour
             {
                 panel.Options[i].GetComponentInChildren<TMP_Text>().text = InstantiatedQuizData.quiz.Options[i];
             }
+        }
+    }
+    public void InstantiateTips(QuestionType type)
+    {
+        GameObject InstantiatedTip = Instantiate(TipPanel, WorldCanvas.transform);
+        QuizData data;
+        if(_Qbank.TryGetValue(type,out data))
+        {
+            UiTipPanel panel = InstantiatedTip.GetComponent<UiTipPanel>();
+            panel.TipDetail.text = data.quiz.Tips;
         }
     }
 }

@@ -13,12 +13,14 @@ public class PlayerActions : MonoBehaviour
     public Joystick Joystick;
     public Image InfectionTimerFill;
     public Image Infection;
+    public Image TipEnterPanel;
     [Header("Player Data")]
     public float Speed;
     public float RotationSpeed;
     public float SenseRadius;
     public InputType inputMode;
     public QuestionType Qtype;
+    public QuestionType Ttype;
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
@@ -54,6 +56,12 @@ public class PlayerActions : MonoBehaviour
             GameManager.Instance.InstantiateQuiz(Qtype);
             AudioManager.Instance.PlaySound(SoundEffectsType.PopUP, this.transform.position);
             Core.BroadcastEvent("OnSendTrigger", this, other.GetComponent<FrontLineTrigger>().QuizTrigger);
+        }
+        if (other.tag == "Tip")
+        {
+            TipEnterPanel.gameObject.SetActive(true);
+            Ttype = other.GetComponent<TipsLogic>().TipType;
+            Core.BroadcastEvent("OnSendTipType", this, Ttype);
         }
     }
     private void OnTriggerExit(Collider other)

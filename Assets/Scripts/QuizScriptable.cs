@@ -8,5 +8,6 @@ public class QuizScriptable : ScriptableObject
     public QuestionType Type;
     public string Question;
     public string[] Options;
+    public string Tips;
     public int CorrectOption;
 }
