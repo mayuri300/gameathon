@@ -36,11 +36,13 @@ public class UiQuizPanel : MonoBehaviour
         if(k == m)
         {
             Debug.Log("Correct Answer!!");
+            AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
             GameManager.Instance.IncreaseContribution(1);
         }
         else
         {
             Debug.LogError("Wrong Answer!");
+            AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
         }
         Destroy(this.gameObject);
 
