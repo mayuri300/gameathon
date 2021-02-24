@@ -5,5 +5,6 @@ using UnityEngine;
 public class FrontLineTrigger : MonoBehaviour
 {
     public QuestionType Type;
+    public BoxCollider QuizTrigger;
 
 }

@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 4658793035847641764}
   - component: {fileID: 4658793035847641766}
   m_Layer: 0
-  m_Name: doc 1
+  m_Name: FrontLiner
   m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1582,6 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  QuizTrigger: {fileID: 4658793035847641765}
 --- !u!1 &5677127546528631670
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,15 +10,26 @@ public class UiQuizPanel : MonoBehaviour
     public TMP_Text Question;
     public Button[] Options;
     public int correctAnswer;
-    private QuestionType type;
 
+
+    private BoxCollider frontLinerTrigger;
+    private void Awake()
+    {
+        Core.SubscribeEvent("OnSendTrigger", OnSendTrigger);
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-
+        Destroy(this.gameObject, 7f);
+        if (frontLinerTrigger != null)
+            Debug.LogWarning("Caught a front Liner!");
     }
 
-
+    private void OnSendTrigger(object sender, object[] args)
+    {
+          frontLinerTrigger = (BoxCollider)args[0];
+    }
 
     private void OnDestroy()
     {
@@ -32,12 +43,13 @@ public class UiQuizPanel : MonoBehaviour
     {
         string k = butt.gameObject.name;
         string m = GameManager.Instance.InstantiatedQuizData.quiz.CorrectOption.ToString();
-        //Debug.Log("Button Clicked : " + k + " Type of this Collision : " + type +" Instantiated data Correctopt : " + m);
         if(k == m)
         {
             Debug.Log("Correct Answer!!");
             AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
             GameManager.Instance.IncreaseContribution(1);
+            if (frontLinerTrigger != null)
+                frontLinerTrigger.enabled = false;
         }
         else
         {
@@ -46,9 +58,5 @@ public class UiQuizPanel : MonoBehaviour
         }
         Destroy(this.gameObject);
 
-    }
-    private void Update()
-    {
-        Debug.Log("GameEvent Type : " + type);
     }
 }
