@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public enum QuestionType { Level0=0,Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10};
+public enum GameLevels { MainMenu=0,GamePlay,GameOver,Level1,Level2,Level3};
 public class GameManager : MonoBehaviour
 {
     private Dictionary<QuestionType, QuizData> _Qbank = new Dictionary<QuestionType, QuizData>();
@@ -27,15 +28,23 @@ public class GameManager : MonoBehaviour
 
     private int mutationPoints;
     private int contributionPoints;
-
+    [Header("UI Stuff")]
     public TMP_Text MutationText;
     public TMP_Text ContributionText;
     [Header("QuizData")]
     public QuizData[] Quiz;
+    [Header("Quiz and Tip GameObjects")]
     public GameObject QuizPanel;
     public GameObject TipPanel;
+    [HideInInspector]
     public GameObject WorldCanvas;
+    [HideInInspector]
     public QuizData InstantiatedQuizData = null;
+    [Header("LevelSpawner")]
+    public Vector3 Level1Spawnner;
+    public Vector3 Level2Spawnner;
+    public Vector3 Level3Spawnner;
+    public GameObject Portal;
 
     public void IncreaseMutation(int amount)
     {
@@ -53,11 +62,7 @@ public class GameManager : MonoBehaviour
     }
     public  void InstantiateQuiz(QuestionType type) //Called on Trigger Enter
     {
-        //instantiate panel
         GameObject InstantiatedQuiz = Instantiate(QuizPanel, WorldCanvas.transform);
-        //QuizPanel.transform.SetParent(WorldCanvas.transform, false);
-        //Get quiz from
-        //QuizData data;
         if(_Qbank.TryGetValue(type, out InstantiatedQuizData))
         {
             UiQuizPanel panel = InstantiatedQuiz.GetComponent<UiQuizPanel>();
@@ -77,6 +82,15 @@ public class GameManager : MonoBehaviour
         {
             UiTipPanel panel = InstantiatedTip.GetComponent<UiTipPanel>();
             panel.TipDetail.text = data.quiz.Tips;
+        }
+    }
+    public void InstantiateSpawner()
+    {
+        if (MyData.CorrectAnswersCount == 3)
+        {
+            GameObject k =Instantiate(Portal, Level1Spawnner,Portal.transform.rotation);
+            PortalLogic l =k.GetComponent<PortalLogic>();
+            l.LevelToLoad = GameLevels.Level1;
         }
     }
 }

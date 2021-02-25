@@ -61,11 +61,13 @@ public class PlayerActions : MonoBehaviour
         {
             TipEnterPanel.gameObject.SetActive(true);
             Ttype = other.GetComponent<TipsLogic>().TipType;
-            Core.BroadcastEvent("OnSendTipType", this, Ttype);
+            BoxCollider k = other.GetComponent<TipsLogic>().Collider;
+            Core.BroadcastEvent("OnSendTipType", this, Ttype,k);
         }
         if (other.tag == "LoadNext")
         {
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            GameLevels k = other.GetComponent<PortalLogic>().LevelToLoad;
+            SceneManager.LoadScene((int)k, LoadSceneMode.Additive);
             Destroy(other.GetComponent<BoxCollider>());
         }
     }

@@ -50,6 +50,8 @@ public class UiQuizPanel : MonoBehaviour
             GameManager.Instance.IncreaseContribution(1);
             if (frontLinerTrigger != null)
                 frontLinerTrigger.enabled = false;
+            MyData.CorrectAnswersCount++;
+            GameManager.Instance.InstantiateSpawner();
         }
         else
         {

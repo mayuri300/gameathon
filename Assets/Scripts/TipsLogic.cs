@@ -8,6 +8,11 @@ public class TipsLogic : MonoBehaviour
     public GameObject Top;
     public GameObject Base;
     public float RoatateSpeed;
+    public BoxCollider Collider;
+    private void Awake()
+    {
+        Collider = this.GetComponent<BoxCollider>();
+    }
     // Start is called before the first frame update
     void Start()
     {

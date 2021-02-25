@@ -10,6 +10,7 @@ public class UiTipEnterLogic : MonoBehaviour
     public Button YesBTN;
     public Button NoBTN;
     private QuestionType Ttype;
+    private BoxCollider Collider;
     private void Awake()
     {
         NoBTN.onClick.AddListener(HideTipEnterPanel);
@@ -20,6 +21,7 @@ public class UiTipEnterLogic : MonoBehaviour
     private void OnReceiveTipType(object sender, object[] args)
     {
         Ttype = (QuestionType)args[0];
+        Collider = (BoxCollider)args[1];
     }
 
     private void OnDestroy()
@@ -35,6 +37,7 @@ public class UiTipEnterLogic : MonoBehaviour
     {
         GameManager.Instance.InstantiateTips(Ttype);
         GameManager.Instance.IncreaseContribution(-1);
+        Collider.enabled = false;
         this.gameObject.SetActive(false);
     }
 }
