@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - Tip
+  - LoadNext
   layers:
   - Default
   - TransparentFX

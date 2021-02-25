@@ -63,6 +63,11 @@ public class PlayerActions : MonoBehaviour
             Ttype = other.GetComponent<TipsLogic>().TipType;
             Core.BroadcastEvent("OnSendTipType", this, Ttype);
         }
+        if (other.tag == "LoadNext")
+        {
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            Destroy(other.GetComponent<BoxCollider>());
+        }
     }
     private void OnTriggerExit(Collider other)
     {

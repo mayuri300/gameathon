@@ -8,6 +8,7 @@ public class CivilianLogic : MonoBehaviour
     public BoxCollider CivilianCollider;
     public Transform[] PatrolPoints;
     public float MoveSpeed;
+    public GameObject InfectionFX;
 
     private Transform target;
     private Vector3 direction;
@@ -19,6 +20,10 @@ public class CivilianLogic : MonoBehaviour
 
     bool hasReached = false;
     float cd = 7f;
+    private void Awake()
+    {
+        InfectionFX.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +76,7 @@ public class CivilianLogic : MonoBehaviour
     public void GetInfected()
     {
         GameManager.Instance.IncreaseMutation(1);
+        InfectionFX.SetActive(true);
         CivilianCollider.enabled = false;
         isInfected = true;
 
