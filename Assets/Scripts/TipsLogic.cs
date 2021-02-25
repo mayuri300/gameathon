@@ -5,9 +5,12 @@ using UnityEngine;
 public class TipsLogic : MonoBehaviour
 {
     public QuestionType TipType;
+    [HideInInspector]
     public GameObject Top;
+    [HideInInspector]
     public GameObject Base;
     public float RoatateSpeed;
+    [HideInInspector]
     public BoxCollider Collider;
     private void Awake()
     {
