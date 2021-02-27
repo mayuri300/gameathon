@@ -143,6 +143,7 @@ public class PlayerActions : MonoBehaviour
     }
     public  void AttackLogic()
     {
+        AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
         myAnim.SetTrigger("attack");
         //Stop Movement
         inputMode = InputType.None;
@@ -163,6 +164,7 @@ public class PlayerActions : MonoBehaviour
         if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
         {
             myAnim.SetTrigger("attack");
+            AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
             
         }
         if(inputMode == InputType.Keyboard) //TODO REmove Later after DEPLOYMENT
@@ -190,8 +192,6 @@ public class PlayerActions : MonoBehaviour
          myAnim.SetFloat("speed", movementDirection.magnitude);
         if (movementDirection.magnitude > 0f)
         {
-            //Footsteps need to play in a timer loop
-            //AudioManager.Instance.PlaySound(SoundEffectsType.Footsteps, this.transform.position);
              this.transform.position += movementVector;
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
@@ -225,5 +225,9 @@ public class PlayerActions : MonoBehaviour
         //ReEnable Button Spam
         AttackBTN.interactable = true;
         inputMode = InputType.Keyboard;
+    }
+    public void PlayFootStepsSound()
+    {
+        AudioManager.Instance.PlaySound(SoundEffectsType.Footsteps, this.transform.position);
     }
 }

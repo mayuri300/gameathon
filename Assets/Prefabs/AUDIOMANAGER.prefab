@@ -53,7 +53,9 @@ MonoBehaviour:
   - SFXType: 4
     clip: {fileID: 8300000, guid: c5aade530506a444385a4169901faaa3, type: 3}
   - SFXType: 8
-    clip: {fileID: 8300000, guid: 8dfc580618850428e904fc73c87a36db, type: 3}
+    clip: {fileID: 8300000, guid: 7bfb7d75c492a784b9658762cbc57238, type: 3}
+  - SFXType: 9
+    clip: {fileID: 8300000, guid: 8c9443083fdb0e741b8dfabe171a8fa0, type: 3}
   MusicFx:
   - MFXType: 1
     clip: {fileID: 8300000, guid: 0ce1298c28bb0430f966eb8e4e7eb211, type: 3}

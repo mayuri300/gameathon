@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum SoundEffectsType { None=0,Hover,Click,PopUP,Wrong,Correct,Infected,Completed,Footsteps}
+public enum SoundEffectsType { None=0,Hover,Click,PopUP,Wrong,Correct,Infected,Completed,Footsteps,Attack}
 public enum MusicEffectsType { None=0,MainMenu,GamePlay,GameOver}
 public class AudioManager : MonoBehaviour
 {
