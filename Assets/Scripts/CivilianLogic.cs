@@ -81,4 +81,20 @@ public class CivilianLogic : MonoBehaviour
         isInfected = true;
 
     }
+    private void OnDrawGizmos()
+    {
+        if (PatrolPoints.Length == 0)
+            return;
+
+        Gizmos.color = Color.white;
+        Vector3 p1 = PatrolPoints[0].position;
+        Vector3 first = p1;
+        for(int i =0; i <= PatrolPoints.Length - 1; i++)
+        {
+            Vector3 p2 = PatrolPoints[i].position;
+            Gizmos.DrawLine(p1,p2);
+            p1 = p2;
+        }
+        Gizmos.DrawLine(first, p1);
+    }
 }

@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartWait: 2
-  SpawnDelay: 5
+  SpawnDelay: 2
   MaxSpawns: 10
   BatPrefab: {fileID: 5002828068029114629, guid: bedf4e05adbfdd74791755c42d65ba54,
     type: 3}
