@@ -8,6 +8,7 @@ public class BatLogic : MonoBehaviour
     private Rigidbody myRbdy;
     public float MoveSpeed;
     public Transform TargetPlayer;
+
     private void Awake()
     {
         myRbdy = this.GetComponent<Rigidbody>();

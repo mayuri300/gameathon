@@ -181,6 +181,8 @@ public class PlayerActions : MonoBehaviour
          myAnim.SetFloat("speed", movementDirection.magnitude);
         if (movementDirection.magnitude > 0f)
         {
+            //Footsteps need to play in a timer loop
+            //AudioManager.Instance.PlaySound(SoundEffectsType.Footsteps, this.transform.position);
              this.transform.position += movementVector;
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 

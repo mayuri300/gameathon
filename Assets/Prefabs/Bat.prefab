@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 200
   TargetPlayer: {fileID: 0}
+  ExplosionFX: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!1 &5002828068029114633
 GameObject:
   m_ObjectHideFlags: 0

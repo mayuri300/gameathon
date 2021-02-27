@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletLogic : MonoBehaviour
 {
     public float Speed;
+    public GameObject ExplosionFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class BulletLogic : MonoBehaviour
     {
         if (other.tag == "Bat")
         {
+            Instantiate(ExplosionFX, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
