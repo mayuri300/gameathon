@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public enum QuestionType { Level0=0,Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10};
 public enum GameLevels { MainMenu=0,GamePlay,GameOver,Level1,Level2,Level3};
+public enum LevelType { None=0,QuizLevel,BatsLevel};
 public class GameManager : MonoBehaviour
 {
     private Dictionary<QuestionType, QuizData> _Qbank = new Dictionary<QuestionType, QuizData>();

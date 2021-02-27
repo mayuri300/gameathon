@@ -865,6 +865,7 @@ MonoBehaviour:
   MagicBullet: {fileID: 3673333993975523533, guid: 8bf6fa8ea7eeed643868012f12590647,
     type: 3}
   NozzlePos: {fileID: 6345265548805806386}
+  SpreadFX: {fileID: 192397392988317164}
 --- !u!1 &2193605862066932066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,6 +3146,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b56cd9b663f23f429e131a54ec87db0, type: 3}
+--- !u!1 &192397392988317164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 7b56cd9b663f23f429e131a54ec87db0,
+    type: 3}
+  m_PrefabInstance: {fileID: 192397392988218188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &192397392987830732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7b56cd9b663f23f429e131a54ec87db0,

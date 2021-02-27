@@ -25,6 +25,7 @@ public class PlayerActions : MonoBehaviour
     [Header("Prefabs")]
     public GameObject MagicBullet;
     public Transform NozzlePos;
+    public GameObject SpreadFX;
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
@@ -50,7 +51,11 @@ public class PlayerActions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UiQuizPanel.OnAnsweredWrong += IncreaseSpreadFXRadius;
+    }
+    private void OnDestroy()
+    {
+        UiQuizPanel.OnAnsweredWrong -= IncreaseSpreadFXRadius;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -92,7 +97,11 @@ public class PlayerActions : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, SenseRadius);
+        Gizmos.DrawWireSphere(this.transform.position, MyData.SpreadRadius);
+    }
+    public void IncreaseSpreadFXRadius(float amount)
+    {
+        SpreadFX.transform.localScale = new Vector3(SpreadFX.transform.localScale.x + amount, SpreadFX.transform.localScale.y + amount, SpreadFX.transform.localScale.z + amount);
     }
     private void ToggleInput()
     {
@@ -187,8 +196,8 @@ public class PlayerActions : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         }
-
-        Collider[] colls = Physics.OverlapSphere(this.transform.position, SenseRadius, CivilianLayer);
+        
+        Collider[] colls = Physics.OverlapSphere(this.transform.position, MyData.SpreadRadius, CivilianLayer);
         if (colls.Length >0)
         {
             //Found a Civilian in range

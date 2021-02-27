@@ -13,6 +13,7 @@ public class UiQuizPanel : MonoBehaviour
 
 
     private BoxCollider frontLinerTrigger;
+    public static Action<float> OnAnsweredWrong;
     private void Awake()
     {
         Core.SubscribeEvent("OnSendTrigger", OnSendTrigger);
@@ -57,6 +58,9 @@ public class UiQuizPanel : MonoBehaviour
         {
             Debug.LogError("Wrong Answer!");
             AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
+            GameManager.Instance.IncreaseMutation(1);
+            OnAnsweredWrong?.Invoke(1.6f);
+            MyData.SpreadRadius++;
         }
         Destroy(this.gameObject);
 
