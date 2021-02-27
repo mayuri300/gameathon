@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum InputType { Keyboard, JoyStick}
+public enum InputType { None,Keyboard, JoyStick}
 public class PlayerActions : MonoBehaviour
 {
     [Header("UI Stuff")]
@@ -14,6 +14,7 @@ public class PlayerActions : MonoBehaviour
     public Image InfectionTimerFill;
     public Image Infection;
     public Image TipEnterPanel;
+    public Button AttackBTN;
     [Header("Player Data")]
     public float Speed;
     public float RotationSpeed;
@@ -21,6 +22,9 @@ public class PlayerActions : MonoBehaviour
     public InputType inputMode;
     public QuestionType Qtype;
     public QuestionType Ttype;
+    [Header("Prefabs")]
+    public GameObject MagicBullet;
+    public Transform NozzlePos;
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
@@ -41,6 +45,7 @@ public class PlayerActions : MonoBehaviour
         ToggleBTN.onClick.AddListener(ToggleInput);
         inputMode = InputType.Keyboard;
         myAnim = GetComponent<Animator>();
+        AttackBTN.onClick.AddListener(AttackLogic);
     }
     // Start is called before the first frame update
     void Start()
@@ -69,6 +74,11 @@ public class PlayerActions : MonoBehaviour
             GameLevels k = other.GetComponent<PortalLogic>().LevelToLoad;
             SceneManager.LoadScene((int)k, LoadSceneMode.Additive);
             Destroy(other.GetComponent<BoxCollider>());
+        }
+        if (other.tag == "Bat")
+        {
+            Destroy(other.gameObject);
+            GameManager.Instance.IncreaseMutation(1);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -122,6 +132,16 @@ public class PlayerActions : MonoBehaviour
         }
             
     }
+    public  void AttackLogic()
+    {
+        myAnim.SetTrigger("attack");
+        //Stop Movement
+        inputMode = InputType.None;
+        //Disable interacable of this btn
+        AttackBTN.interactable = false;
+        //Instantiate Bullet based on AnimEvent
+        //REnable Movement at end of animation
+    }
     // Update is called once per frame
     void Update()
     {
@@ -131,7 +151,12 @@ public class PlayerActions : MonoBehaviour
             if (HpFill.fillAmount <= 0)
                 SceneManager.LoadScene(2);
         }
-        if(inputMode == InputType.Keyboard)
+        if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
+        {
+            myAnim.SetTrigger("attack");
+            
+        }
+        if(inputMode == InputType.Keyboard) //TODO REmove Later after DEPLOYMENT
         {
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
@@ -141,6 +166,11 @@ public class PlayerActions : MonoBehaviour
         {
             horizontal = Joystick.JoyPadInputVector.x;
             vertical = Joystick.JoyPadInputVector.z;
+        }
+        if (inputMode == InputType.None)
+        {
+            horizontal = 0f;
+            vertical = 0f;
         }
             movementVector = new Vector3(horizontal, 0, vertical) * Time.deltaTime * Speed;
             movementDirection = movementVector.normalized;
@@ -171,5 +201,18 @@ public class PlayerActions : MonoBehaviour
             infectionSpeed = 1f;
         }
 
+    }
+
+    public void AnimEventStartAttack()
+    {
+        //Start Instantiating at this frame
+        Instantiate(MagicBullet, NozzlePos.position, NozzlePos.rotation);
+    }
+    public void AnimEventStopAttack()
+    {
+        //Enable Movement
+        //ReEnable Button Spam
+        AttackBTN.interactable = true;
+        inputMode = InputType.Keyboard;
     }
 }
