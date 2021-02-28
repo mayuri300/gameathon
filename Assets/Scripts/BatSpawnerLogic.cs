@@ -32,6 +32,7 @@ public class BatSpawnerLogic : MonoBehaviour
 
   
         }
+        Destroy(this.gameObject);
     }
     public void Spawn()
     {

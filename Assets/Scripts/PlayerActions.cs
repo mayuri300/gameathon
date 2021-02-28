@@ -155,7 +155,7 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isSafe)
+        if (!isSafe) //Not Working because front liner trigger is getting destroyed!!
         {
             HpFill.fillAmount -= Time.deltaTime * 0.01f;
             if (HpFill.fillAmount <= 0)

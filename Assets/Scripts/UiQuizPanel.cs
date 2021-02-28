@@ -23,8 +23,6 @@ public class UiQuizPanel : MonoBehaviour
     void Start()
     {
         Destroy(this.gameObject, 7f);
-        if (frontLinerTrigger != null)
-            Debug.LogWarning("Caught a front Liner!");
     }
 
     private void OnSendTrigger(object sender, object[] args)
