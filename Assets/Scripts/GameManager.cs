@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
         foreach(QuizData x in Quiz)
         {
             _Qbank[x.Type] = x;
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
     {
         if (MyData.CorrectAnswersCount == 3)
         {
+            //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             GameObject k =Instantiate(Portal, Level1Spawnner,Portal.transform.rotation);
             PortalLogic l =k.GetComponent<PortalLogic>();
             l.LevelToLoad = GameLevels.Level1;
