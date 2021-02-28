@@ -26,7 +26,12 @@ public class GameManager : MonoBehaviour
     {
         Instance = null;
     }
-
+    private bool isSafe = false;
+    public bool IsSafe
+    {
+        get { return isSafe; }
+        set { isSafe = value; }
+    }
     private int mutationPoints;
     private int contributionPoints;
     [Header("UI Stuff")]

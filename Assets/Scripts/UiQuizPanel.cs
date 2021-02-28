@@ -48,7 +48,10 @@ public class UiQuizPanel : MonoBehaviour
             AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
             GameManager.Instance.IncreaseContribution(1);
             if (frontLinerTrigger != null)
+            {
                 frontLinerTrigger.enabled = false;
+                GameManager.Instance.IsSafe = false;
+            }
             MyData.CorrectAnswersCount++;
             GameManager.Instance.InstantiateSpawner();
         }

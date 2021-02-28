@@ -61,7 +61,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (other.tag == "Finish")
         {
-            isSafe = true;
+            GameManager.Instance.IsSafe = true;
             Qtype = other.GetComponent<FrontLineTrigger>().Type;
             GameManager.Instance.InstantiateQuiz(Qtype);
             AudioManager.Instance.PlaySound(SoundEffectsType.PopUP, this.transform.position);
@@ -90,7 +90,7 @@ public class PlayerActions : MonoBehaviour
     {
         if(other.tag == "Finish")
         {
-            isSafe = false;
+            GameManager.Instance.IsSafe = false;
         }
     }
 
@@ -130,6 +130,7 @@ public class PlayerActions : MonoBehaviour
             }
         if (infectionSpeed <= 0)
         {
+            AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
             Infection.gameObject.SetActive(false);
             InfectionTimerFill.gameObject.SetActive(false);
             infectionSpeed = 1f;
@@ -155,7 +156,7 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isSafe) //Not Working because front liner trigger is getting destroyed!!
+        if (!GameManager.Instance.IsSafe) //Not Working because front liner trigger is getting destroyed!!
         {
             HpFill.fillAmount -= Time.deltaTime * 0.01f;
             if (HpFill.fillAmount <= 0)
