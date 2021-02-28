@@ -63,6 +63,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0ce1298c28bb0430f966eb8e4e7eb211, type: 3}
   - MFXType: 2
     clip: {fileID: 8300000, guid: ad9e4d6cd7d62344b90fd71d76973e1a, type: 3}
+  - MFXType: 3
+    clip: {fileID: 8300000, guid: 02369047030966a478cd64fb77f91a44, type: 3}
   ToggleSources:
   - {fileID: 8207991348631623145}
   - {fileID: 8207991348631623148}

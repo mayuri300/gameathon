@@ -44,9 +44,10 @@ public class PlayerActions : MonoBehaviour
     private void Awake()
     {
         ToggleBTN.onClick.AddListener(ToggleInput);
-        inputMode = InputType.Keyboard;
+        inputMode = InputType.JoyStick;
         myAnim = GetComponent<Animator>();
         AttackBTN.onClick.AddListener(AttackLogic);
+        AttackBTN.interactable = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,7 @@ public class PlayerActions : MonoBehaviour
             GameLevels k = other.GetComponent<PortalLogic>().LevelToLoad;
             SceneManager.LoadScene((int)k, LoadSceneMode.Additive);
             Destroy(other.GetComponent<BoxCollider>());
+            AttackBTN.interactable = true;
         }
         if (other.tag == "Bat")
         {
@@ -144,8 +146,12 @@ public class PlayerActions : MonoBehaviour
     }
     public  void AttackLogic()
     {
+        if (GameManager.Instance.ContributionPoints <= 0)
+            return;
+
         AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
         myAnim.SetTrigger("attack");
+        GameManager.Instance.IncreaseContribution(-1);
         //Stop Movement
         inputMode = InputType.None;
         //Disable interacable of this btn
@@ -168,7 +174,8 @@ public class PlayerActions : MonoBehaviour
             AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
             
         }
-        if(inputMode == InputType.Keyboard) //TODO REmove Later after DEPLOYMENT
+        #region MOVEMENTLOGIC
+        if (inputMode == InputType.Keyboard) //TODO REmove Later after DEPLOYMENT
         {
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
@@ -197,7 +204,8 @@ public class PlayerActions : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         }
-        
+        #endregion
+
         Collider[] colls = Physics.OverlapSphere(this.transform.position, MyData.SpreadRadius, CivilianLayer);
         if (colls.Length >0)
         {
@@ -214,7 +222,7 @@ public class PlayerActions : MonoBehaviour
         }
 
     }
-
+    #region AnimationEvents
     public void AnimEventStartAttack()
     {
         //Start Instantiating at this frame
@@ -225,10 +233,11 @@ public class PlayerActions : MonoBehaviour
         //Enable Movement
         //ReEnable Button Spam
         AttackBTN.interactable = true;
-        inputMode = InputType.Keyboard;
+        inputMode = InputType.JoyStick;
     }
     public void PlayFootStepsSound()
     {
         AudioManager.Instance.PlaySound(SoundEffectsType.Footsteps, this.transform.position);
     }
+    #endregion
 }

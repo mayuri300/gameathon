@@ -44,9 +44,10 @@ public class UiQuizPanel : MonoBehaviour
         string m = GameManager.Instance.InstantiatedQuizData.quiz.CorrectOption.ToString();
         if(k == m)
         {
-            Debug.Log("Correct Answer!!");
+            //ANSWER CORRECT LOGIC
             AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
-            GameManager.Instance.IncreaseContribution(1);
+            int u = UnityEngine.Random.Range(3, 5);
+            GameManager.Instance.IncreaseContribution(u);
             if (frontLinerTrigger != null)
             {
                 frontLinerTrigger.enabled = false;
@@ -57,7 +58,7 @@ public class UiQuizPanel : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Wrong Answer!");
+            //WRONG ANSWER LOGIC
             AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
             GameManager.Instance.IncreaseMutation(1);
             OnAnsweredWrong?.Invoke(1.6f);

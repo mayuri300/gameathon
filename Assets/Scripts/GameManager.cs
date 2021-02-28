@@ -33,7 +33,11 @@ public class GameManager : MonoBehaviour
         set { isSafe = value; }
     }
     private int mutationPoints;
+    public int MutationPoints { get { return mutationPoints; } }
+
     private int contributionPoints;
+    public int ContributionPoints { get { return contributionPoints; } }
+
     [Header("UI Stuff")]
     public TMP_Text MutationText;
     public TMP_Text ContributionText;
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseContribution(int amount)
     {
         contributionPoints += amount;
-        ContributionText.text = string.Format("{0} / 10", contributionPoints);
+        ContributionText.text = string.Format("{0}", contributionPoints);
     }
     public  void InstantiateQuiz(QuestionType type) //Called on Trigger Enter
     {
