@@ -26,6 +26,8 @@ public class PlayerActions : MonoBehaviour
     public GameObject MagicBullet;
     public Transform NozzlePos;
     public GameObject SpreadFX;
+    public GameObject SmokeHitFX;
+    
 
     private Vector3 movementVector;
     private Vector3 movementDirection;
@@ -38,6 +40,9 @@ public class PlayerActions : MonoBehaviour
     private bool isSafe = false;
     private float infectionSpeed = 1f;
     private bool foundCivilian = false;
+
+    private string batLevelIntro = "You have entered Survival Level. Defend yourself against bats by attacking them. Beware your attack ammo is based on your contribution points!!";
+    private string quizLevelIntro = "You have entered Quiz Level. Find all FrontLine Workers and answer the quiz correctly. Do not infect the Civilians. Wrong answers will increase the spread radius beware!!";
 
 
 
@@ -77,14 +82,34 @@ public class PlayerActions : MonoBehaviour
         }
         if (other.tag == "LoadNext")
         {
-            GameLevels k = other.GetComponent<PortalLogic>().LevelToLoad;
-            SceneManager.LoadScene((int)k, LoadSceneMode.Additive);
+            PortalLogic pl = other.GetComponent<PortalLogic>();
+            SceneManager.LoadScene((int)pl.LevelToLoad, LoadSceneMode.Additive);
+
+            //Load short Intro of Next Level in Tip Panel
+            GameObject Tipobj = null;
+            UiTipPanel tp = null;
+            switch (pl.NextLevelType)
+            {
+                case LevelType.BatsLevel:
+                    Tipobj = Instantiate(GameManager.Instance.TipPanel, GameManager.Instance.WorldCanvas.transform);
+                    tp = Tipobj.GetComponent<UiTipPanel>();
+                    tp.TipDetail.text = batLevelIntro;
+                    break;
+                case LevelType.QuizLevel:
+                    Tipobj = Instantiate(GameManager.Instance.TipPanel, GameManager.Instance.WorldCanvas.transform);
+                    tp = Tipobj.GetComponent<UiTipPanel>();
+                    tp.TipDetail.text = quizLevelIntro;
+                    break;
+            }
+
             Destroy(other.GetComponent<BoxCollider>());
             AttackBTN.interactable = true;
         }
         if (other.tag == "Bat")
         {
             Destroy(other.gameObject);
+            Instantiate(SmokeHitFX, this.transform);
+            AudioManager.Instance.PlaySound(SoundEffectsType.Infected, this.transform.position);
             GameManager.Instance.IncreaseMutation(1);
         }
     }

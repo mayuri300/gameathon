@@ -27,6 +27,11 @@ public class GameOverLogic : MonoBehaviour
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);
+        //Reset all MyData stats
+        //Spread Radius to 3
+        MyData.SpreadRadius = 3f;
+        //correctely answered to 0
+        MyData.CorrectAnswersCount = 0;
     }
     public void QuitGame()
     {

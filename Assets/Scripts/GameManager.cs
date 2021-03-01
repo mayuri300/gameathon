@@ -99,10 +99,16 @@ public class GameManager : MonoBehaviour
     {
         if (MyData.CorrectAnswersCount == 3)
         {
-            //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             GameObject k =Instantiate(Portal, Level1Spawnner,Portal.transform.rotation);
             PortalLogic l =k.GetComponent<PortalLogic>();
             l.LevelToLoad = GameLevels.Level1;
+            l.NextLevelType = LevelType.BatsLevel;
+
+            //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            GameObject u = Instantiate(TipPanel, WorldCanvas.transform);
+            UiTipPanel tp = u.GetComponent<UiTipPanel>();
+            tp.TipDetail.text = "You have completed all the Quiz, Please Enter the Portal to unlock next level!";
+
         }
     }
 }

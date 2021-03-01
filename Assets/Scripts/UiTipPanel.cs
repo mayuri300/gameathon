@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum TipType {  None,QuizTip,InstructionTip};
 public class UiTipPanel : MonoBehaviour
 {
     public TMP_Text TipDetail;
