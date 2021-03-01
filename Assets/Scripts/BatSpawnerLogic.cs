@@ -11,6 +11,7 @@ public class BatSpawnerLogic : MonoBehaviour
     public PositionInfo[] Pos;
 
     private float spawnCount = 0;
+    public float SpawnCount { get { return spawnCount; } }
 
     // Start is called before the first frame update
     void Start()

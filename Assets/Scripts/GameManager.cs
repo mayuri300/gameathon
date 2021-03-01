@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public enum QuestionType { Level0=0,Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10};
-public enum GameLevels { MainMenu=0,GamePlay,GameOver,Level1,Level2,Level3};
+public enum GameLevels { MainMenu=0,Level0=1,Level1=2,Level2=3,Level3=4,Level4=5,GameOver=6};
 public enum LevelType { None=0,QuizLevel,BatsLevel};
 public class GameManager : MonoBehaviour
 {
@@ -15,8 +15,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+            Destroy(this.gameObject);
+
         foreach(QuizData x in Quiz)
         {
             _Qbank[x.Type] = x;
@@ -25,7 +32,8 @@ public class GameManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Instance = null;
+        if (Instance = this)
+            Instance = null;
     }
     private bool isSafe = false;
     public bool IsSafe
@@ -63,7 +71,7 @@ public class GameManager : MonoBehaviour
         MutationText.text = string.Format("{0} / 10", mutationPoints);
         if (amount >= 10)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(6); //6=GameOver
         }
     }
     public void IncreaseContribution(int amount)

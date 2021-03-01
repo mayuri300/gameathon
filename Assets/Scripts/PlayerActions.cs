@@ -27,6 +27,7 @@ public class PlayerActions : MonoBehaviour
     public Transform NozzlePos;
     public GameObject SpreadFX;
     public GameObject SmokeHitFX;
+    public GameObject FadePanel;
     
 
     private Vector3 movementVector;
@@ -54,15 +55,18 @@ public class PlayerActions : MonoBehaviour
         AttackBTN.onClick.AddListener(AttackLogic);
         AttackBTN.interactable = false;
     }
+
     // Start is called before the first frame update
     void Start()
     {
         UiQuizPanel.OnAnsweredWrong += IncreaseSpreadFXRadius;
     }
+
     private void OnDestroy()
     {
         UiQuizPanel.OnAnsweredWrong -= IncreaseSpreadFXRadius;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Finish")
@@ -109,7 +113,7 @@ public class PlayerActions : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(SmokeHitFX, this.transform);
-            AudioManager.Instance.PlaySound(SoundEffectsType.Infected, this.transform.position);
+            AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
             GameManager.Instance.IncreaseMutation(1);
         }
     }
@@ -126,10 +130,12 @@ public class PlayerActions : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, MyData.SpreadRadius);
     }
+
     public void IncreaseSpreadFXRadius(float amount)
     {
         SpreadFX.transform.localScale = new Vector3(SpreadFX.transform.localScale.x + amount, SpreadFX.transform.localScale.y + amount, SpreadFX.transform.localScale.z + amount);
     }
+
     private void ToggleInput()
     {
         if (inputMode == InputType.Keyboard)
@@ -171,18 +177,24 @@ public class PlayerActions : MonoBehaviour
     }
     public  void AttackLogic()
     {
-        if (GameManager.Instance.ContributionPoints <= 0)
-            return;
-
-        AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
-        myAnim.SetTrigger("attack");
-        GameManager.Instance.IncreaseContribution(-1);
-        //Stop Movement
-        inputMode = InputType.None;
-        //Disable interacable of this btn
-        AttackBTN.interactable = false;
-        //Instantiate Bullet based on AnimEvent
-        //REnable Movement at end of animation
+        if (GameManager.Instance.ContributionPoints <= 0) 
+        {
+            FadingTMP ftp = FadePanel.GetComponent<FadingTMP>();
+            ftp.Details.text = "Out of Ammo!!";
+            Instantiate(FadePanel, GameManager.Instance.WorldCanvas.transform);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
+            myAnim.SetTrigger("attack");
+            GameManager.Instance.IncreaseContribution(-1);
+            //Stop Movement
+            inputMode = InputType.None;
+            //Disable interacable of this btn
+            AttackBTN.interactable = false;
+            //Instantiate Bullet based on AnimEvent
+            //REnable Movement at end of animation
+        } 
     }
     // Update is called once per frame
     void Update()

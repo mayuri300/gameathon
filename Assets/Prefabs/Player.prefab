@@ -868,6 +868,8 @@ MonoBehaviour:
   NozzlePos: {fileID: 6345265548805806386}
   SpreadFX: {fileID: 192397392988317164}
   SmokeHitFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  FadePanel: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
+    type: 3}
 --- !u!1 &2193605862066932066
 GameObject:
   m_ObjectHideFlags: 0
