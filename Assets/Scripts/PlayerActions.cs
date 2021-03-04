@@ -72,7 +72,9 @@ public class PlayerActions : MonoBehaviour
         if (other.tag == "Finish")
         {
             GameManager.Instance.IsSafe = true;
-            Qtype = other.GetComponent<FrontLineTrigger>().Type;
+            FrontLineTrigger kk = other.GetComponent<FrontLineTrigger>();
+            Qtype = kk.Type;
+            kk.RemoveIndicator();
             GameManager.Instance.InstantiateQuiz(Qtype);
             AudioManager.Instance.PlaySound(SoundEffectsType.PopUP, this.transform.position);
             Core.BroadcastEvent("OnSendTrigger", this, other.GetComponent<FrontLineTrigger>().QuizTrigger);

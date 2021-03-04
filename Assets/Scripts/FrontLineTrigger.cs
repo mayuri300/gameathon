@@ -6,5 +6,11 @@ public class FrontLineTrigger : MonoBehaviour
 {
     public QuestionType Type;
     public BoxCollider QuizTrigger;
+    public GameObject Indicator;
+
+    public void RemoveIndicator()
+    {
+        Destroy(Indicator);
+    }
 
 }
