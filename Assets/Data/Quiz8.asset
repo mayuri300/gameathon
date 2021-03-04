@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451158aefcd15fd48804e84aed1200b3, type: 3}
+  m_Name: Quiz8
+  m_EditorClassIdentifier: 
+  Type: 8
+  Question: What happens to a person suffering from COVID-19?
+  Options:
+  - 'Around 80% of the people will require no treatment as such and will recover
+    on their own. '
+  - Around <20% or a small proportion may need hospitalisation.
+  - All the above
+  Tips: 'A person who develops COVID-19: 80% does not require treatment , less than
+    20% may need hospitalisation.'
+  CorrectOption: 2
