@@ -50,18 +50,18 @@ MonoBehaviour:
     type: 3}
   Pos:
   - SpawnLocation: North
-    SpawnPosition: {x: 0, y: 0.5, z: 44}
+    SpawnPosition: {x: 3.66, y: 0.5, z: 119}
   - SpawnLocation: South
-    SpawnPosition: {x: 0, y: 0.5, z: 15}
+    SpawnPosition: {x: 3.66, y: 0.5, z: 65}
   - SpawnLocation: East
-    SpawnPosition: {x: 14, y: 0.5, z: 30}
+    SpawnPosition: {x: 31, y: 0.5, z: 94}
   - SpawnLocation: West
-    SpawnPosition: {x: -14, y: 0.5, z: 30}
+    SpawnPosition: {x: -20, y: 0.5, z: 94}
   - SpawnLocation: NorthEast
-    SpawnPosition: {x: 14, y: 0.5, z: 44}
+    SpawnPosition: {x: 23, y: 0.5, z: 113}
   - SpawnLocation: NorthWest
-    SpawnPosition: {x: -14, y: 0.5, z: 44}
+    SpawnPosition: {x: -18, y: 0.5, z: 113}
   - SpawnLocation: SouthEast
-    SpawnPosition: {x: 14, y: 0.5, z: 15}
+    SpawnPosition: {x: 21, y: 0.5, z: 72}
   - SpawnLocation: SouthWest
-    SpawnPosition: {x: -14, y: 0.5, z: 15}
+    SpawnPosition: {x: -13, y: 0.5, z: 72}

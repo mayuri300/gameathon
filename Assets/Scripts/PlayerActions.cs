@@ -205,7 +205,7 @@ public class PlayerActions : MonoBehaviour
         {
             HpFill.fillAmount -= Time.deltaTime * 0.01f;
             if (HpFill.fillAmount <= 0)
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(6); //6 => GO
         }
         if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
         {

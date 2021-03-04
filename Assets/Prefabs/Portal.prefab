@@ -4623,7 +4623,7 @@ GameObject:
   - component: {fileID: 979755470472674709}
   - component: {fileID: 4710450991234246188}
   m_Layer: 0
-  m_Name: CFX3_Vortex_Ground
+  m_Name: Portal
   m_TagString: LoadNext
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9283,6 +9283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b5e33bbcb8a764a8a0a58a95f1d92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextLevelType: 0
   LevelToLoad: 3
 --- !u!1 &979755469291455670
 GameObject:
