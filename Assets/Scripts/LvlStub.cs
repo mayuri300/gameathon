@@ -20,13 +20,13 @@ public class LvlStub : MonoBehaviour
         Scene sc = SceneManager.GetSceneByName(SceneName);
         if (sc.isLoaded)
         {
-            LevelType = LevelType.BatsLevel;
+            LevelType = LevelType.SurvivalLevel;
         }
         else
         {
             LevelType = LevelType.QuizLevel;
         }
-        if (LevelType == LevelType.BatsLevel)
+        if (LevelType == LevelType.SurvivalLevel)
         {
             //Enable Attacking for Player
             //Enable CountDownTimer ToSpawnBats

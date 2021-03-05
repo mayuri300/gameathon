@@ -8,8 +8,14 @@ public class MainMenuNavigation : MonoBehaviour
 {
     public Button PlayGameBTN;
     public Button ExitGameBTN;
+    public Button TutorialBTN;
+    public Button SettingsBTN;
+    public GameObject SettingsPanel;
     public Image LoadingPanel;
     public Text LoadingProgressText;
+    public Text LoadingTipText;
+    public GameLevels GameLevel;
+    public GameLevels TutorialLevel;
 
     private void Awake()
     {
@@ -20,34 +26,49 @@ public class MainMenuNavigation : MonoBehaviour
     {
         PlayGameBTN.onClick.AddListener(PlayGame);
         ExitGameBTN.onClick.AddListener(ExitGame);
+        TutorialBTN.onClick.AddListener(LoadTutorial);
+        SettingsBTN.onClick.AddListener(ShowSettings);
     }
     private void OnDestroy()
     {
         PlayGameBTN.onClick.RemoveAllListeners();
         ExitGameBTN.onClick.RemoveAllListeners();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        TutorialBTN.onClick.RemoveAllListeners();
+        SettingsBTN.onClick.RemoveAllListeners();
     }
 
     public void PlayGame()
     {
         //Async Load into Game Scene
-        StartCoroutine(LoadGame());
+        StartCoroutine(LoadGame((int)GameLevel));
     }
-    IEnumerator LoadGame()
+    public void LoadTutorial()
+    {
+        StartCoroutine(LoadGame((int)TutorialLevel));
+    }
+    public void ShowSettings()
+    {
+        Instantiate(SettingsPanel,this.transform);
+    }
+    IEnumerator LoadGame(int level)
     {
         yield return null;
-        AsyncOperation ao = SceneManager.LoadSceneAsync(1);
+        AsyncOperation ao = SceneManager.LoadSceneAsync(level);
         ao.allowSceneActivation = false;
         while (!ao.isDone)
         {
             //display loading text and progress
             LoadingPanel.gameObject.SetActive(true);
-            LoadingProgressText.text = "Loading : " + (ao.progress * 100) + "%";
+            LoadingProgressText.text = "Loading : " + (ao.progress * 100).ToString("f1") + "%";
+            if(level == (int)GameLevel)
+            {
+                LoadingTipText.text = "Loading all resources for Main Game. Please be patient!";
+
+            }
+            else
+            {
+                LoadingTipText.text = "Loading all resources for Tutorial Game Level. Make Best use of it, Please be patient! Thank You.";
+            }
             yield return new WaitForSeconds(2f);
             if(ao.progress >= 0.9f)
             {

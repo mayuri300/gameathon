@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 24595cad80f63f94db922520edb8bda5
   - enabled: 1
-    path: Assets/Scenes/Level0.unity
+    path: Assets/Scenes/TutorialLvl.unity
+    guid: 0dbda2ad4eb67e6488bfd81b050f037c
+  - enabled: 1
+    path: Assets/Scenes/QuizLvl1.unity
     guid: 01ae391777b8eae4c9970f60f9c3e3cb
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/BatsLvl1.unity
     guid: 94f0e9e475b410742be586ee3ae69f43
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/QuizLvl2.unity
     guid: 1eeb93a77c931cb468a2d9fa40ebbc93
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
+    path: Assets/Scenes/BatsLvl2.unity
     guid: 875d0248b3a437c41826288ef40048cf
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
-    guid: 0dbda2ad4eb67e6488bfd81b050f037c
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 511a66b11c0edbd438bb0fac0d40e65b

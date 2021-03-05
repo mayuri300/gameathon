@@ -96,7 +96,7 @@ public class PlayerActions : MonoBehaviour
             UiTipPanel tp = null;
             switch (pl.NextLevelType)
             {
-                case LevelType.BatsLevel:
+                case LevelType.SurvivalLevel:
                     Tipobj = Instantiate(GameManager.Instance.TipPanel, GameManager.Instance.WorldCanvas.transform);
                     tp = Tipobj.GetComponent<UiTipPanel>();
                     tp.TipDetail.text = batLevelIntro;
@@ -115,7 +115,7 @@ public class PlayerActions : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(SmokeHitFX, this.transform);
-            AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
+            AudioManager.Instance.PlaySound(SoundEffectsType.Infected,this.transform.position);
             GameManager.Instance.IncreaseMutation(1);
         }
     }

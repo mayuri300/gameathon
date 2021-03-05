@@ -6,8 +6,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public enum QuestionType { Level0=0,Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10};
-public enum GameLevels { MainMenu=0,Level0=1,Level1=2,Level2=3,Level3=4,Level4=5,GameOver=6};
-public enum LevelType { None=0,QuizLevel,BatsLevel};
+public enum GameLevels { MainMenu=0,TutorialLvl=1,QuizLvl1=2,BatsLvl1=3,QuizLvl2=4,BatsLvl2=5,GameOver=6};
+public enum LevelType { None=0,QuizLevel,SurvivalLevel};
 public class GameManager : MonoBehaviour
 {
     private Dictionary<QuestionType, QuizData> _Qbank = new Dictionary<QuestionType, QuizData>();
@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject k =Instantiate(Portal, Level1Spawnner,Portal.transform.rotation);
             PortalLogic l =k.GetComponent<PortalLogic>();
-            l.LevelToLoad = GameLevels.Level1;
-            l.NextLevelType = LevelType.BatsLevel;
+            l.LevelToLoad = GameLevels.BatsLvl1;
+            l.NextLevelType = LevelType.SurvivalLevel;
 
             //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             GameObject u = Instantiate(TipPanel, WorldCanvas.transform);
