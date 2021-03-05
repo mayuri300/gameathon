@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         get { return isSafe; }
         set { isSafe = value; }
     }
+
     private int mutationPoints;
     public int MutationPoints { get { return mutationPoints; } }
 
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
     public Vector3 Level2Spawnner;
     public Vector3 Level3Spawnner;
     public GameObject Portal;
+    public GameObject FadePanel;
 
     public void IncreaseMutation(int amount)
     {
@@ -105,7 +107,7 @@ public class GameManager : MonoBehaviour
     }
     public void InstantiateSpawner()
     {
-        if (MyData.CorrectAnswersCount == 3)
+        if (MyData.CorrectAnswersCount == 3) //Logic for Entering Bats Lvl1
         {
             GameObject k =Instantiate(Portal, Level1Spawnner,Portal.transform.rotation);
             PortalLogic l =k.GetComponent<PortalLogic>();

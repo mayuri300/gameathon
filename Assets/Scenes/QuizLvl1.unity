@@ -556,6 +556,8 @@ MonoBehaviour:
   Level2Spawnner: {x: 0, y: 0, z: 0}
   Level3Spawnner: {x: 0, y: 0, z: 0}
   Portal: {fileID: 979755469291455666, guid: cf60b6899eb4cdd40a19a90fc0de3eea, type: 3}
+  FadePanel: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
+    type: 3}
 --- !u!4 &43788884
 Transform:
   m_ObjectHideFlags: 0

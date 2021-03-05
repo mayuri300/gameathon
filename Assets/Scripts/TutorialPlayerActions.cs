@@ -13,6 +13,8 @@ public class TutorialPlayerActions : MonoBehaviour
     private bool foundCivilian = false;
     private int CivilianLayer { get { return 1 << LayerMask.NameToLayer("Civilian"); } }
     public InputType inputMode;
+    public QuestionType Qtype;
+    public QuestionType Ttype;
     private Vector3 movementVector;
     private Vector3 movementDirection;
     private Animator myAnim;
@@ -24,6 +26,7 @@ public class TutorialPlayerActions : MonoBehaviour
     public Button AttackBTN;
     public Image InfectionTimerFill;
     public Image Infection;
+    public GameObject TipEnterPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,43 @@ public class TutorialPlayerActions : MonoBehaviour
         myAnim = this.GetComponent<Animator>();
         inputMode = InputType.JoyStick;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+ 
+        //Quiz Trigger
+        if(other.tag == "Finish")
+        {
+            TutorialManager.Instance.isSafe = true;
+            FrontLineTrigger kk = other.GetComponent<FrontLineTrigger>();
+            Qtype = kk.Type;
+            //Instantiate Quiz and Sound
+            Core.BroadcastEvent("OnSendTrigger", this, other.GetComponent<FrontLineTrigger>().QuizTrigger);
+        }
+        //Tips Trigger
+        if(other.tag == "Tip")
+        {
+            TipEnterPanel.SetActive(true);
+            Ttype = other.GetComponent<TipsLogic>().TipType;
+            BoxCollider k = other.GetComponent<TipsLogic>().Collider;
+            Core.BroadcastEvent("OnSendTipType", this, Ttype, k);
+            //send Ttype to tip ui panel
+        }
+        //Bats Trigger
+        //End Game Trigger
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        //Quiz Trigger
+        if (other.tag == "Finish")
+        {
+            TutorialManager.Instance.isSafe = false;
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, MyData.SpreadRadius);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -119,6 +158,10 @@ public class TutorialPlayerActions : MonoBehaviour
             }
         }
 
+    }
+    public void PlayFootStepsSound()
+    {
+        AudioManager.Instance.PlaySound(SoundEffectsType.Footsteps, this.transform.position);
     }
 
 }

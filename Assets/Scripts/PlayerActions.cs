@@ -22,6 +22,9 @@ public class PlayerActions : MonoBehaviour
     public InputType inputMode;
     public QuestionType Qtype;
     public QuestionType Ttype;
+    private float tickTimer = 2f;
+    private float maxHP = 100f;
+    public float MaxHP { get { return maxHP; } set { maxHP = value; } }
     [Header("Prefabs")]
     public GameObject MagicBullet;
     public Transform NozzlePos;
@@ -203,9 +206,17 @@ public class PlayerActions : MonoBehaviour
     {
         if (!GameManager.Instance.IsSafe) //Not Working because front liner trigger is getting destroyed!!
         {
-            HpFill.fillAmount -= Time.deltaTime * 0.01f;
-            if (HpFill.fillAmount <= 0)
+            HpFill.fillAmount = maxHP/100f;
+            tickTimer -= Time.deltaTime;
+            if (tickTimer <= 0)
+            {
+                maxHP -= 2f;
+                tickTimer = 2f;
+            }
+            if (maxHP <= 0)
+            {
                 SceneManager.LoadScene(6); //6 => GO
+            }
         }
         if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
         {

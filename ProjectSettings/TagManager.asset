@@ -8,6 +8,7 @@ TagManager:
   - Tip
   - LoadNext
   - Bat
+  - Tutorial
   layers:
   - Default
   - TransparentFX
