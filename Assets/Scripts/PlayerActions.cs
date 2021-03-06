@@ -31,6 +31,7 @@ public class PlayerActions : MonoBehaviour
     public GameObject SpreadFX;
     public GameObject SmokeHitFX;
     public GameObject FadePanel;
+    public GameObject PortalIndicator;
     
 
     private Vector3 movementVector;
@@ -57,17 +58,27 @@ public class PlayerActions : MonoBehaviour
         myAnim = GetComponent<Animator>();
         AttackBTN.onClick.AddListener(AttackLogic);
         AttackBTN.interactable = false;
+        DisableIndicator();
     }
-
+    public void EnableIndication()
+    {
+        PortalIndicator.SetActive(true);
+    }
+    public void DisableIndicator()
+    {
+        PortalIndicator.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
         UiQuizPanel.OnAnsweredWrong += IncreaseSpreadFXRadius;
+        UiQuizPanel.OnCompleteAllQuiz += EnableIndication;
     }
 
     private void OnDestroy()
     {
         UiQuizPanel.OnAnsweredWrong -= IncreaseSpreadFXRadius;
+        UiQuizPanel.OnCompleteAllQuiz -= EnableIndication;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -120,6 +131,11 @@ public class PlayerActions : MonoBehaviour
             Instantiate(SmokeHitFX, this.transform);
             AudioManager.Instance.PlaySound(SoundEffectsType.Infected,this.transform.position);
             GameManager.Instance.IncreaseMutation(1);
+        }
+        if(other.tag == "HP")
+        {
+            MaxHP += 3f;
+            Destroy(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)

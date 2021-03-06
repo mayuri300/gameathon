@@ -9,6 +9,7 @@ TagManager:
   - LoadNext
   - Bat
   - Tutorial
+  - HP
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ public class UiQuizPanel : MonoBehaviour
 
     private BoxCollider frontLinerTrigger;
     public static Action<float> OnAnsweredWrong;
+    public static Action OnCompleteAllQuiz;
     private void Awake()
     {
         Core.SubscribeEvent("OnSendTrigger", OnSendTrigger);
@@ -55,6 +56,11 @@ public class UiQuizPanel : MonoBehaviour
             }
             MyData.CorrectAnswersCount++;
             GameManager.Instance.InstantiateSpawner();
+            if (MyData.CorrectAnswersCount == 3 || MyData.CorrectAnswersCount == 7)
+            {
+                //show indicator
+                OnCompleteAllQuiz?.Invoke();
+            }
         }
         else
         {
