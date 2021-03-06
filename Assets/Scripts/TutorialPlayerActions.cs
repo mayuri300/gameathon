@@ -27,12 +27,23 @@ public class TutorialPlayerActions : MonoBehaviour
     public Image InfectionTimerFill;
     public Image Infection;
     public GameObject TipEnterPanel;
+    public GameObject SpreadFX;
+    public GameObject MagicBullet;
+    public Transform NozzlePos;
 
     // Start is called before the first frame update
     void Start()
     {
         myAnim = this.GetComponent<Animator>();
         inputMode = InputType.JoyStick;
+        AttackBTN.onClick.AddListener(AttackLogic);
+
+        UiTutorialQuizPanel.OnAnsweredWrongTutorial += IncreaseSpreadFXRadius;
+        EnableAttack(false);
+    }
+    private void OnDestroy()
+    {
+        UiTutorialQuizPanel.OnAnsweredWrongTutorial -= IncreaseSpreadFXRadius;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -44,6 +55,7 @@ public class TutorialPlayerActions : MonoBehaviour
             FrontLineTrigger kk = other.GetComponent<FrontLineTrigger>();
             Qtype = kk.Type;
             //Instantiate Quiz and Sound
+            TutorialManager.Instance.InstantiateQuiz(Qtype);
             Core.BroadcastEvent("OnSendTrigger", this, other.GetComponent<FrontLineTrigger>().QuizTrigger);
         }
         //Tips Trigger
@@ -56,7 +68,16 @@ public class TutorialPlayerActions : MonoBehaviour
             //send Ttype to tip ui panel
         }
         //Bats Trigger
-        //End Game Trigger
+        if (other.tag == "Bat")
+        {
+            TutorialManager.Instance.IncreaseMutation(1);
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "LoadNext")
+        {
+            PortalLogic pl = other.GetComponent<PortalLogic>();
+            SceneManager.LoadScene((int)pl.LevelToLoad);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -66,20 +87,27 @@ public class TutorialPlayerActions : MonoBehaviour
             TutorialManager.Instance.isSafe = false;
         }
     }
-    private void OnDrawGizmos()
+    public void IncreaseSpreadFXRadius(float amount)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, MyData.SpreadRadius);
+        SpreadFX.transform.localScale = new Vector3(SpreadFX.transform.localScale.x + amount, SpreadFX.transform.localScale.y + amount, SpreadFX.transform.localScale.z + amount);
+        TutorialManager.Instance.SpreadRadius += 1;
+    }
+    public void AttackLogic()
+    {
+        if (TutorialManager.Instance.ContributionPoints <= 0)
+            return;
+        else
+        {
+
+            myAnim.SetTrigger("attack");
+            TutorialManager.Instance.IncreaseContribution(-1);
+            inputMode = InputType.None;
+            AttackBTN.interactable = false;
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        //if (!GameManager.Instance.IsSafe) //Not Working because front liner trigger is getting destroyed!!
-        //{
-        //    HpFill.fillAmount -= Time.deltaTime * 0.01f;
-        //    if (HpFill.fillAmount <= 0)
-        //        SceneManager.LoadScene(6); //6 => GO
-        //}
         if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
         {
             myAnim.SetTrigger("attack");
@@ -118,7 +146,7 @@ public class TutorialPlayerActions : MonoBehaviour
         }
         #endregion
 
-        Collider[] colls = Physics.OverlapSphere(this.transform.position, MyData.SpreadRadius, CivilianLayer);
+        Collider[] colls = Physics.OverlapSphere(this.transform.position, TutorialManager.Instance.SpreadRadius, CivilianLayer);
         if (colls.Length > 0)
         {
             //Found a Civilian in range
@@ -164,4 +192,20 @@ public class TutorialPlayerActions : MonoBehaviour
         AudioManager.Instance.PlaySound(SoundEffectsType.Footsteps, this.transform.position);
     }
 
+    public void AnimEventStartAttack()
+    {
+        //Start Instantiating at this frame
+        Instantiate(MagicBullet, NozzlePos.position, NozzlePos.rotation);
+    }
+    public void AnimEventStopAttack()
+    {
+        //Enable Movement
+        //ReEnable Button Spam
+        AttackBTN.interactable = true;
+        inputMode = InputType.JoyStick;
+    }
+    public void EnableAttack(bool canAtk)
+    {
+        AttackBTN.interactable=(canAtk);
+    }
 }

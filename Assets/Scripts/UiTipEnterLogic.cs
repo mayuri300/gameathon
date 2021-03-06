@@ -39,8 +39,8 @@ public class UiTipEnterLogic : MonoBehaviour
         if (k.name == "TutorialLvl")
         {
             //Load Tip from Tutorial Manager
-            TutorialManager.Instance.InstantiateTips(TutorialManager.Instance.Quiz[0].Type);
-            //Increase Contribution from Tutorial Manager
+            TutorialManager.Instance.InstantiateTips(Ttype); //
+            TutorialManager.Instance.IncreaseContribution(-1);
             Collider.enabled = false;
             this.gameObject.SetActive(false);
         }

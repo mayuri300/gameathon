@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BatLogic : MonoBehaviour
 {
@@ -15,7 +16,11 @@ public class BatLogic : MonoBehaviour
     }
     void Start()
     {
-        TargetPlayer = GameObject.FindObjectOfType<PlayerActions>().transform;
+        Scene c = SceneManager.GetActiveScene();
+        if (c.name == "TutorialLvl")
+            TargetPlayer = GameObject.FindObjectOfType<TutorialPlayerActions>().transform;
+        else
+            TargetPlayer = GameObject.FindObjectOfType<PlayerActions>().transform;
     }
 
     // Update is called once per frame

@@ -302,13 +302,19 @@ MonoBehaviour:
   isSafe: 0
   HPFill: {fileID: 797723310}
   TutorialCanvas: {fileID: 1937689279}
-  QuizPanel: {fileID: 6941951710317584089, guid: d28ab90b7cd392248bb36e9852c45b63,
+  QuizPanel: {fileID: 6941951710317584089, guid: 14b29201d1de2004eaa291a928970cda,
     type: 3}
   TipPanel: {fileID: 6018649484910334739, guid: 5a1a97c2f72202443902c8200ddf6a7b,
     type: 3}
   Quiz:
   - Type: 10
     quiz: {fileID: 11400000, guid: 4b89025083b401b40b6a873a35790dda, type: 2}
+  InstantiatedQuizData:
+    Type: 0
+    quiz: {fileID: 0}
+  ContributionText: {fileID: 2112748210}
+  MutationText: {fileID: 339009914}
+  SpreadRadius: 3
 --- !u!1 &238290632
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +726,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0.33600003, y: 0, z: 0}
+--- !u!1 &669633140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669633143}
+  - component: {fileID: 669633142}
+  - component: {fileID: 669633141}
+  m_Layer: 0
+  m_Name: BatSpawnTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &669633141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669633140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06db72728b435394a97c9f93a601b0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatsSpawnner: {fileID: 353010726363209039, guid: e7e084079628fc044a8369505dc17f6e,
+    type: 3}
+--- !u!65 &669633142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669633140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 29.61524, y: 1, z: 1}
+  m_Center: {x: -4.8411703, y: 0, z: 0}
+--- !u!4 &669633143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669633140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.02, y: 1, z: 5.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &785071511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,7 +2231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749810957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1647764, y: 0.97, z: -26.86}
+  m_LocalPosition: {x: 1.1647764, y: 0.97, z: -28.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2384,6 +2449,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888116575}
   m_CullTransparentMesh: 0
+--- !u!1 &1901581495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901581498}
+  - component: {fileID: 1901581497}
+  - component: {fileID: 1901581496}
+  m_Layer: 0
+  m_Name: Trigger4
+  m_TagString: Tutorial
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1901581496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901581495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6f7047359126d44afa3192474da897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1186077294}
+  Message: 'You Have Unlocked Attack Mode. Kill all the bats before they reach you.
+    Note : Each attack consumes 1 CP'
+  TutorialTriggerTip: {fileID: 6074336192975944727, guid: 36a69090b0a92134abf89b85d5e04259,
+    type: 3}
+--- !u!65 &1901581497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901581495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.060432, y: 1, z: 1}
+  m_Center: {x: -1.0350571, y: 0, z: 0}
+--- !u!4 &1901581498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901581495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1647764, y: 0.97, z: 3.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902946245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,7 +2702,7 @@ PrefabInstance:
     - target: {fileID: 1332918889778612054, guid: 025a71589f66fc84588c9228d8e418f5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.72
+      value: -31.24
       objectReference: {fileID: 0}
     - target: {fileID: 1332918889778612054, guid: 025a71589f66fc84588c9228d8e418f5,
         type: 3}
@@ -2614,6 +2741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1582386169780974454, guid: 025a71589f66fc84588c9228d8e418f5,
         type: 3}
+      propertyPath: HpFill
+      value: 
+      objectReference: {fileID: 797723310}
+    - target: {fileID: 1582386169780974454, guid: 025a71589f66fc84588c9228d8e418f5,
+        type: 3}
       propertyPath: JoyStick
       value: 
       objectReference: {fileID: 2074394996}
@@ -2641,11 +2773,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorialPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 1816263499213037036, guid: 025a71589f66fc84588c9228d8e418f5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 025a71589f66fc84588c9228d8e418f5, type: 3}
@@ -3159,7 +3286,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 1
 --- !u!222 &2112748211
 CanvasRenderer:
   m_ObjectHideFlags: 0

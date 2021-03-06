@@ -15,8 +15,8 @@ MonoBehaviour:
   Type: 10
   Question: What is the incubation period for COVID - 19?
   Options:
-  - 10 days
-  - 12 days
+  - 2 days
+  - 4 days
   - 14 days
   Tips: "The virus can be in someone\u2019s body for up to 14 days before they get
     symptoms."

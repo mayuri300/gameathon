@@ -31,12 +31,15 @@ public class TutorialManager : MonoBehaviour
     public GameObject QuizPanel;
     public GameObject TipPanel;
     public QuizData[] Quiz;
-    private QuizData InstantiatedQuizData = null;
+    public QuizData InstantiatedQuizData = null;
+    public Text ContributionText, MutationText;
+    public float SpreadRadius;
+
     public float HP { get { return maxHp; } set { maxHp = value; } }
 
-    private int contributionPoints;
+    private int contributionPoints = 1;
     public int ContributionPoints { get { return contributionPoints; } }
-    private int mutationPoints;
+    private int mutationPoints = 0;
     public int MutationPoints { get{ return mutationPoints; } }
 
     // Start is called before the first frame update
@@ -44,12 +47,22 @@ public class TutorialManager : MonoBehaviour
     {
         
     }
+    public void IncreaseContribution(int amount)
+    {
+        contributionPoints += amount;
+        ContributionText.text = string.Format("{0}", contributionPoints);
+    }
+    public void IncreaseMutation(int amount)
+    {
+        mutationPoints += amount;
+        MutationText.text = string.Format("{0}/10", mutationPoints);
+    }
     public void InstantiateQuiz(QuestionType type)
     {
         GameObject InstantiatedQuiz = Instantiate(QuizPanel, TutorialCanvas.transform);
         if (_Qbank.TryGetValue(type, out InstantiatedQuizData))
         {
-            UiQuizPanel panel = InstantiatedQuiz.GetComponent<UiQuizPanel>();
+            UiTutorialQuizPanel panel = InstantiatedQuiz.GetComponent<UiTutorialQuizPanel>();
             panel.Question.text = InstantiatedQuizData.quiz.Question;
             panel.correctAnswer = InstantiatedQuizData.quiz.CorrectOption;
             for (int i = 0; i <= panel.Options.Length - 1; i++)
@@ -81,5 +94,7 @@ public class TutorialManager : MonoBehaviour
                 tickTime = 2f;
             }
         }
+        if (maxHp <= 0)
+            SceneManager.LoadScene((int)GameLevels.MainMenu);
     }
 }
