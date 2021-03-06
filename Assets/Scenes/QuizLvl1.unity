@@ -544,6 +544,18 @@ MonoBehaviour:
     quiz: {fileID: 11400000, guid: 00810dace16ebee4ca17759b4bdda45a, type: 2}
   - Type: 2
     quiz: {fileID: 11400000, guid: bf85dd4a165f5fd47b60a3eb45d96178, type: 2}
+  - Type: 3
+    quiz: {fileID: 11400000, guid: 3e6e78712ff3d214f93e70ddf51e4547, type: 2}
+  - Type: 4
+    quiz: {fileID: 11400000, guid: 0cfb8e65ea2ccf34593c7526371f333a, type: 2}
+  - Type: 5
+    quiz: {fileID: 11400000, guid: d43e2fa206966a84f88fe8f020304b9f, type: 2}
+  - Type: 6
+    quiz: {fileID: 11400000, guid: 597136084b7a0c94e895dc6a1fbe89a1, type: 2}
+  - Type: 7
+    quiz: {fileID: 11400000, guid: a9b1d4acb6708e44ea9614404d490a1f, type: 2}
+  - Type: 8
+    quiz: {fileID: 11400000, guid: ffa6db3c426fe8547b51201321fb6390, type: 2}
   QuizPanel: {fileID: 6941951710317584089, guid: d28ab90b7cd392248bb36e9852c45b63,
     type: 3}
   TipPanel: {fileID: 6018649484910334739, guid: 5a1a97c2f72202443902c8200ddf6a7b,
