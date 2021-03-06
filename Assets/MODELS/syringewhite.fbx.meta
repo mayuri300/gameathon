@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 5c991873bb16996489a69492afd3962f
+guid: a3615207588416b479c8f8a04feca298
 ModelImporter:
-  serializedVersion: 27
-  internalIDToNameTable: []
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: -6165513750323226943
+    second: Base stack
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -43,6 +46,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -86,6 +90,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
