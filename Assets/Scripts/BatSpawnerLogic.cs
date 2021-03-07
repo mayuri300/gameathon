@@ -40,9 +40,9 @@ public class BatSpawnerLogic : MonoBehaviour
          }
         finishedSpawns = true;
         //Spawn Next Portal on specified location here after spawnning
-        Instantiate(PortalPrefab, NextPortalLocation, PortalPrefab.transform.rotation);
         PortalLogic pl = PortalPrefab.GetComponent<PortalLogic>();
         pl.LevelToLoad = NextLevel;
+        Instantiate(PortalPrefab, NextPortalLocation, PortalPrefab.transform.rotation);
         Destroy(this.gameObject);
     }
     public void Spawn()
