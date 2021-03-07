@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6106b4e6820a034c8b73a3e58f91272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartWait: 2
+  StartWait: 4
   SpawnDelay: 2
-  MaxSpawns: 6
+  MaxSpawns: 8
   BatPrefab: {fileID: 5002828068029114629, guid: bedf4e05adbfdd74791755c42d65ba54,
     type: 3}
   Pos:
@@ -65,3 +65,7 @@ MonoBehaviour:
     SpawnPosition: {x: 21, y: 0.5, z: 72}
   - SpawnLocation: SouthWest
     SpawnPosition: {x: -13, y: 0.5, z: 72}
+  PortalPrefab: {fileID: 979755469291455666, guid: cf60b6899eb4cdd40a19a90fc0de3eea,
+    type: 3}
+  NextPortalLocation: {x: 0, y: 0.8, z: 135}
+  NextLevel: 4

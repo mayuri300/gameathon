@@ -78,6 +78,11 @@ public class TutorialPlayerActions : MonoBehaviour
             PortalLogic pl = other.GetComponent<PortalLogic>();
             SceneManager.LoadScene((int)pl.LevelToLoad);
         }
+        if (other.tag == "HP")
+        {
+            TutorialManager.Instance.HP += 3f;
+            Destroy(other.gameObject);
+        }
     }
     private void OnTriggerExit(Collider other)
     {

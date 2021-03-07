@@ -9,7 +9,6 @@ public class BatLogic : MonoBehaviour
     private Rigidbody myRbdy;
     public float MoveSpeed;
     public Transform TargetPlayer;
-    public GameObject HPPrefab;
 
     private void Awake()
     {
@@ -30,11 +29,5 @@ public class BatLogic : MonoBehaviour
         Vector3 direction = (TargetPlayer.position - this.transform.position).normalized;
         myRbdy.velocity = direction * MoveSpeed * Time.deltaTime;
         this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-    }
-    private void OnDestroy()
-    {
-        int x = UnityEngine.Random.RandomRange(0, 10);
-        if (x >= 7)
-            Instantiate(HPPrefab, this.transform.position, Quaternion.identity);
     }
 }

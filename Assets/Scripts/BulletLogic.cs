@@ -6,6 +6,8 @@ public class BulletLogic : MonoBehaviour
 {
     public float Speed;
     public GameObject ExplosionFX;
+    public GameObject HPPrefab;
+    private Vector3 offset = new Vector3(0,1,0);
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,10 @@ public class BulletLogic : MonoBehaviour
     {
         if (other.tag == "Bat")
         {
+            int x = UnityEngine.Random.RandomRange(0, 10);
+            if (x >= 7)
+                Instantiate(HPPrefab, this.transform.position + offset, Quaternion.identity);
+
             Instantiate(ExplosionFX, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             Destroy(other.gameObject);
