@@ -183,6 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BatSpawnnerPrefab: {fileID: 6355398950621662778, guid: cc9007cee52b7d44dbffaeb1b7bb047d,
     type: 3}
+  FadingTMPPrefab: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
+    type: 3}
 --- !u!4 &1950967957
 Transform:
   m_ObjectHideFlags: 0

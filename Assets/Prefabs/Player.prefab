@@ -759,9 +759,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1531790881859920342}
   - component: {fileID: 1353537080622371065}
-  - component: {fileID: 1353537080622371066}
   - component: {fileID: 1353537080622371060}
   - component: {fileID: 1353537080622371064}
+  - component: {fileID: 3865579090085907902}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -805,21 +805,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 118
   m_CollisionDetection: 0
---- !u!65 &1353537080622371066
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2164493214982159212}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6607361, y: 1.9222791, z: 1}
-  m_Center: {x: 0.041296005, y: 0.9429258, z: 0}
 --- !u!95 &1353537080622371060
 Animator:
   serializedVersion: 3
@@ -851,7 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee510a7eb85af0429ed2bdd3c5efb9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToggleBTN: {fileID: 0}
   HpFill: {fileID: 0}
   Joystick: {fileID: 0}
   InfectionTimerFill: {fileID: 0}
@@ -872,6 +858,20 @@ MonoBehaviour:
   FadePanel: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
     type: 3}
   PortalIndicator: {fileID: 5459419811882250678}
+--- !u!136 &3865579090085907902
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164493214982159212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.36
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2193605862066932066
 GameObject:
   m_ObjectHideFlags: 0

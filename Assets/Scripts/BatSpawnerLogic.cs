@@ -8,12 +8,15 @@ public class BatSpawnerLogic : MonoBehaviour
     public float SpawnDelay;
     public float MaxSpawns;
     public GameObject BatPrefab;
-    public PositionInfo[] Pos;
     public GameObject PortalPrefab;
+    public GameObject FadingTMPPrefab;
+    public PositionInfo[] Pos;
     [Header("Next Portal Spot")]
     public Vector3 NextPortalLocation;
     [Header("Next Level Enum")]
     public GameLevels NextLevel;
+
+    private FadingTMP ftp;
 
     private float spawnCount = 0;
     public float SpawnCount { get { return spawnCount; } }
@@ -25,6 +28,7 @@ public class BatSpawnerLogic : MonoBehaviour
     void Start()
     {
         StartCoroutine(MoveSpawner());
+        ftp = FadingTMPPrefab.GetComponent<FadingTMP>();
     }
 
     public IEnumerator MoveSpawner()
@@ -35,6 +39,8 @@ public class BatSpawnerLogic : MonoBehaviour
             int k = Random.Range(0, Pos.Length - 1);
             this.transform.position = Pos[k].SpawnPosition;
             Debug.Log("Spawnning From : " + Pos[k].SpawnLocation);
+            ftp.Details.text = "A Bat has spawnned from : " + Pos[k].SpawnLocation;
+            Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
             yield return new WaitForSeconds(SpawnDelay);
             Spawn();
          }
@@ -43,6 +49,8 @@ public class BatSpawnerLogic : MonoBehaviour
         PortalLogic pl = PortalPrefab.GetComponent<PortalLogic>();
         pl.LevelToLoad = NextLevel;
         pl.NextLevelType = LevelType.QuizLevel;
+        ftp.Details.text = "Portal has appeared towards north, kill all Bats and Proceed!.";
+        Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
         Instantiate(PortalPrefab, NextPortalLocation, PortalPrefab.transform.rotation);
         Destroy(this.gameObject);
     }

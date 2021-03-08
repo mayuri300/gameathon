@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public enum QuestionType { Level0=0,Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10};
-public enum GameLevels { MainMenu=0,TutorialLvl=1,QuizLvl1=2,BatsLvl1=3,QuizLvl2=4,BatsLvl2=5,GameOver=6};
+public enum GameLevels { MainMenu=0,TutorialLvl=1,QuizLvl1=2,BatsLvl1=3,QuizLvl2=4,BatsLvl2=5,GameOver=6,GameWin=7};
 public enum LevelType { None=0,QuizLevel,SurvivalLevel};
 public class GameManager : MonoBehaviour
 {

@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BatSpawnnerPrefab: {fileID: 6432169880058285805, guid: 913b6542e0f18ff4e9180a009b316bd6,
     type: 3}
+  FadingTMPPrefab: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
+    type: 3}
 --- !u!65 &470927293
 BoxCollider:
   m_ObjectHideFlags: 0
