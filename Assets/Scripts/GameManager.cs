@@ -107,18 +107,30 @@ public class GameManager : MonoBehaviour
     }
     public void InstantiateSpawner()
     {
-        if (MyData.CorrectAnswersCount == 3) //Logic for Entering Bats Lvl1
+        switch (MyData.CorrectAnswersCount)
         {
-            GameObject k =Instantiate(Portal, Level1Spawnner,Portal.transform.rotation);
-            PortalLogic l =k.GetComponent<PortalLogic>();
-            l.LevelToLoad = GameLevels.BatsLvl1;
-            l.NextLevelType = LevelType.SurvivalLevel;
+            case 5: //Answered all quiz in Lvl1
+                GameObject k = Instantiate(Portal, Level1Spawnner, Portal.transform.rotation);
+                PortalLogic l = k.GetComponent<PortalLogic>();
+                l.LevelToLoad = GameLevels.BatsLvl1;
+                l.NextLevelType = LevelType.SurvivalLevel;
 
-            //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            GameObject u = Instantiate(TipPanel, WorldCanvas.transform);
-            UiTipPanel tp = u.GetComponent<UiTipPanel>();
-            tp.TipDetail.text = "You have completed all the Quiz, Please Enter the Portal to unlock next level!";
+                //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                GameObject u = Instantiate(TipPanel, WorldCanvas.transform);
+                UiTipPanel tp = u.GetComponent<UiTipPanel>();
+                tp.TipDetail.text = "You have completed all the Quiz, Please Enter the Portal to unlock next level!";
+                break;
+            case 9: //Answered all quiz in Lvl2
+                GameObject p = Instantiate(Portal, Level2Spawnner, Portal.transform.rotation);
+                PortalLogic pl = p.GetComponent<PortalLogic>();
+                pl.LevelToLoad = GameLevels.BatsLvl2;
+                pl.NextLevelType = LevelType.SurvivalLevel;
 
+                //TODO Load a Message screen saying Move to the portal to load next Level - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                GameObject go = Instantiate(TipPanel, WorldCanvas.transform);
+                UiTipPanel uitp = go.GetComponent<UiTipPanel>();
+                uitp.TipDetail.text = "You have completed all the Quiz, Please Enter the Portal to unlock next level!";
+                break;
         }
     }
 }

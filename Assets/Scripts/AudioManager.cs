@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public enum SoundEffectsType { None=0,Hover,Click,PopUP,Wrong,Correct,Infected,Completed,Footsteps,Attack}
-public enum MusicEffectsType { None=0,MainMenu,GamePlay,GameOver}
+public enum MusicEffectsType { None=0,MainMenu,GamePlay,GameOver,Survival,Tutorial,GameWin}
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { private set; get; }

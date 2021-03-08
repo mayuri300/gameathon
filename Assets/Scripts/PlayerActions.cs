@@ -8,7 +8,6 @@ public enum InputType { None,Keyboard, JoyStick}
 public class PlayerActions : MonoBehaviour
 {
     [Header("UI Stuff")]
-    public Button ToggleBTN;
     public Image HpFill;
     public Joystick Joystick;
     public Image InfectionTimerFill;
@@ -53,7 +52,6 @@ public class PlayerActions : MonoBehaviour
 
     private void Awake()
     {
-        ToggleBTN.onClick.AddListener(ToggleInput);
         inputMode = InputType.JoyStick;
         myAnim = GetComponent<Animator>();
         AttackBTN.onClick.AddListener(AttackLogic);
@@ -111,19 +109,20 @@ public class PlayerActions : MonoBehaviour
             switch (pl.NextLevelType)
             {
                 case LevelType.SurvivalLevel:
+                    AttackBTN.interactable = true;
                     Tipobj = Instantiate(GameManager.Instance.TipPanel, GameManager.Instance.WorldCanvas.transform);
                     tp = Tipobj.GetComponent<UiTipPanel>();
                     tp.TipDetail.text = batLevelIntro;
                     break;
                 case LevelType.QuizLevel:
+                    AudioManager.Instance.PlayMusic(MusicEffectsType.GamePlay);
+                    AttackBTN.interactable = false;
                     Tipobj = Instantiate(GameManager.Instance.TipPanel, GameManager.Instance.WorldCanvas.transform);
                     tp = Tipobj.GetComponent<UiTipPanel>();
                     tp.TipDetail.text = quizLevelIntro;
                     break;
             }
-
             Destroy(other.GetComponent<BoxCollider>());
-            AttackBTN.interactable = true;
         }
         if (other.tag == "Bat")
         {
@@ -134,7 +133,8 @@ public class PlayerActions : MonoBehaviour
         }
         if(other.tag == "HP")
         {
-            MaxHP += 3f;
+            MaxHP += 10f;
+            AudioManager.Instance.PlaySound(SoundEffectsType.Completed);
             Destroy(other.gameObject);
         }
     }
@@ -155,20 +155,6 @@ public class PlayerActions : MonoBehaviour
     public void IncreaseSpreadFXRadius(float amount)
     {
         SpreadFX.transform.localScale = new Vector3(SpreadFX.transform.localScale.x + amount, SpreadFX.transform.localScale.y + amount, SpreadFX.transform.localScale.z + amount);
-    }
-
-    private void ToggleInput()
-    {
-        if (inputMode == InputType.Keyboard)
-        {
-            inputMode = InputType.JoyStick;
-            ToggleBTN.GetComponentInChildren<Text>().text = "JoyStick!";
-        }
-        else if(inputMode == InputType.JoyStick)
-        {
-            inputMode = InputType.Keyboard;
-            ToggleBTN.GetComponentInChildren<Text>().text = "Keyboard!";
-        }
     }
     public void EnableInfectionUI(bool foundCivilian,Collider[] civilian)
     {
@@ -234,24 +220,11 @@ public class PlayerActions : MonoBehaviour
                 SceneManager.LoadScene(6); //6 => GO
             }
         }
-        if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
-        {
-            myAnim.SetTrigger("attack");
-            AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
-            
-        }
         #region MOVEMENTLOGIC
-        if (inputMode == InputType.Keyboard) //TODO REmove Later after DEPLOYMENT
-        {
-            horizontal = Input.GetAxisRaw("Horizontal");
-            vertical = Input.GetAxisRaw("Vertical");
-
-        }
-        else
-        {
-            horizontal = Joystick.JoyPadInputVector.x;
-            vertical = Joystick.JoyPadInputVector.z;
-        }
+     
+        horizontal = Joystick.JoyPadInputVector.x;
+        vertical = Joystick.JoyPadInputVector.z;
+        
         if (inputMode == InputType.None)
         {
             horizontal = 0f;

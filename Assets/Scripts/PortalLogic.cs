@@ -17,7 +17,7 @@ public class PortalLogic : MonoBehaviour
                 return;
             else
             {
-                pa.DisableIndicator();
+                pa.DisableIndicator(); //Arrow indicator above head
             }
         }
     }

@@ -10,7 +10,11 @@ public class LvlStub : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(BatSpawnnerPrefab, this.transform.position, Quaternion.identity);
-        this.GetComponent<BoxCollider>().enabled = false;
+        if(other.tag == "Player")
+        {
+            AudioManager.Instance.PlayMusic(MusicEffectsType.Survival);
+            Instantiate(BatSpawnnerPrefab, this.transform.position, Quaternion.identity);
+            this.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 }

@@ -56,7 +56,7 @@ public class UiQuizPanel : MonoBehaviour
             }
             MyData.CorrectAnswersCount++;
             GameManager.Instance.InstantiateSpawner();
-            if (MyData.CorrectAnswersCount == 3 || MyData.CorrectAnswersCount == 7)
+            if (MyData.CorrectAnswersCount == 5 || MyData.CorrectAnswersCount == 9)
             {
                 //show indicator
                 OnCompleteAllQuiz?.Invoke();

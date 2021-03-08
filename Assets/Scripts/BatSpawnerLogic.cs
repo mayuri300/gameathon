@@ -42,6 +42,7 @@ public class BatSpawnerLogic : MonoBehaviour
         //Spawn Next Portal on specified location here after spawnning
         PortalLogic pl = PortalPrefab.GetComponent<PortalLogic>();
         pl.LevelToLoad = NextLevel;
+        pl.NextLevelType = LevelType.QuizLevel;
         Instantiate(PortalPrefab, NextPortalLocation, PortalPrefab.transform.rotation);
         Destroy(this.gameObject);
     }

@@ -58,6 +58,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8c9443083fdb0e741b8dfabe171a8fa0, type: 3}
   - SFXType: 6
     clip: {fileID: 8300000, guid: 15c26b3121091e24d876116dbc572946, type: 3}
+  - SFXType: 7
+    clip: {fileID: 8300000, guid: d08a435894c744943bbac33dd289785d, type: 3}
   MusicFx:
   - MFXType: 1
     clip: {fileID: 8300000, guid: 0ce1298c28bb0430f966eb8e4e7eb211, type: 3}
@@ -65,6 +67,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ad9e4d6cd7d62344b90fd71d76973e1a, type: 3}
   - MFXType: 3
     clip: {fileID: 8300000, guid: 02369047030966a478cd64fb77f91a44, type: 3}
+  - MFXType: 4
+    clip: {fileID: 8300000, guid: 411f1ab5b4c60864cb32ca3eeca31e2a, type: 3}
   ToggleSources:
   - {fileID: 8207991348631623145}
   - {fileID: 8207991348631623148}
