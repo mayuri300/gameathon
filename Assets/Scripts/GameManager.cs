@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
             Destroy(this.gameObject);
@@ -32,7 +31,6 @@ public class GameManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (Instance = this)
             Instance = null;
     }
     private bool isSafe = false;
@@ -63,7 +61,6 @@ public class GameManager : MonoBehaviour
     [Header("LevelSpawner")]
     public Vector3 Level1Spawnner;
     public Vector3 Level2Spawnner;
-    public Vector3 Level3Spawnner;
     public GameObject Portal;
     public GameObject FadePanel;
 
@@ -71,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         mutationPoints += amount;
         MutationText.text = string.Format("{0} / 10", mutationPoints);
-        if (amount >= 10)
+        if (mutationPoints >= 10)
         {
             SceneManager.LoadScene(6); //6=GameOver
         }

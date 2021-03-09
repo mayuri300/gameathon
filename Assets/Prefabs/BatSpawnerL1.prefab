@@ -71,3 +71,4 @@ MonoBehaviour:
     SpawnPosition: {x: -13, y: 0.5, z: 72}
   NextPortalLocation: {x: 0, y: 0.8, z: 135}
   NextLevel: 4
+  NextLevelType: 1

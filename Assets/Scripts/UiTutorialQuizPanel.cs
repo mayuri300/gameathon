@@ -44,8 +44,9 @@ public class UiTutorialQuizPanel : MonoBehaviour
         if (k == m)
         {
             //Correct
-            Debug.Log("CORRECT!");
+            //Debug.Log("CORRECT!");
             //Sound
+            AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
             int u = UnityEngine.Random.Range(3, 5);
             TutorialManager.Instance.IncreaseContribution(u);
             if (frontLinerTrigger != null)
@@ -58,8 +59,9 @@ public class UiTutorialQuizPanel : MonoBehaviour
         else
         {
             //Wrong
-            Debug.Log("WRONG!");
+            //Debug.Log("WRONG!");
             //Sound
+            AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
             TutorialManager.Instance.IncreaseMutation(1);
             OnAnsweredWrongTutorial?.Invoke(1.6f);
         }

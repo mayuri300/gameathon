@@ -14,6 +14,9 @@ public class BatLogic : MonoBehaviour
     {
         myRbdy = this.GetComponent<Rigidbody>();
     }
+    private void OnDestroy()
+    {
+    }
     void Start()
     {
         Scene c = SceneManager.GetActiveScene();

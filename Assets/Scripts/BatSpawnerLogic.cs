@@ -15,6 +15,7 @@ public class BatSpawnerLogic : MonoBehaviour
     public Vector3 NextPortalLocation;
     [Header("Next Level Enum")]
     public GameLevels NextLevel;
+    public LevelType NextLevelType;
 
     private FadingTMP ftp;
 
@@ -38,7 +39,7 @@ public class BatSpawnerLogic : MonoBehaviour
          {
             int k = Random.Range(0, Pos.Length - 1);
             this.transform.position = Pos[k].SpawnPosition;
-            Debug.Log("Spawnning From : " + Pos[k].SpawnLocation);
+            //Debug.Log("Spawnning From : " + Pos[k].SpawnLocation);
             ftp.Details.text = "A Bat has spawnned from : " + Pos[k].SpawnLocation;
             Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
             yield return new WaitForSeconds(SpawnDelay);
@@ -48,6 +49,7 @@ public class BatSpawnerLogic : MonoBehaviour
         //Spawn Next Portal on specified location here after spawnning
         PortalLogic pl = PortalPrefab.GetComponent<PortalLogic>();
         pl.LevelToLoad = NextLevel;
+        pl.NextLevelType = this.NextLevelType;
         pl.NextLevelType = LevelType.QuizLevel;
         ftp.Details.text = "Portal has appeared towards north, kill all Bats and Proceed!.";
         Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);

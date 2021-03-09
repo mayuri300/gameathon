@@ -15,6 +15,7 @@ public class TutorialManager : MonoBehaviour
         {
             _Qbank[x.Type] = x;
         }
+        AudioManager.Instance.PlayMusic(MusicEffectsType.Tutorial, true);
     }
     private void OnDestroy()
     {

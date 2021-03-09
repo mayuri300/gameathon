@@ -61,6 +61,7 @@ public class TutorialPlayerActions : MonoBehaviour
         //Tips Trigger
         if(other.tag == "Tip")
         {
+            AudioManager.Instance.PlaySound(SoundEffectsType.PopUP);
             TipEnterPanel.SetActive(true);
             Ttype = other.GetComponent<TipsLogic>().TipType;
             BoxCollider k = other.GetComponent<TipsLogic>().Collider;
@@ -70,6 +71,7 @@ public class TutorialPlayerActions : MonoBehaviour
         //Bats Trigger
         if (other.tag == "Bat")
         {
+            AudioManager.Instance.PlaySound(SoundEffectsType.Infected,this.transform.position);
             TutorialManager.Instance.IncreaseMutation(1);
             Destroy(other.gameObject);
         }
@@ -80,6 +82,7 @@ public class TutorialPlayerActions : MonoBehaviour
         }
         if (other.tag == "HP")
         {
+            AudioManager.Instance.PlaySound(SoundEffectsType.Completed);
             TutorialManager.Instance.HP += 3f;
             Destroy(other.gameObject);
         }
@@ -103,7 +106,7 @@ public class TutorialPlayerActions : MonoBehaviour
             return;
         else
         {
-
+            AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
             myAnim.SetTrigger("attack");
             TutorialManager.Instance.IncreaseContribution(-1);
             inputMode = InputType.None;

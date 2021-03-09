@@ -57,6 +57,7 @@ public class PlayerActions : MonoBehaviour
         AttackBTN.onClick.AddListener(AttackLogic);
         AttackBTN.interactable = false;
         DisableIndicator();
+        GameObject.FindObjectOfType<GameManager>();
     }
     public void EnableIndication()
     {
@@ -101,6 +102,9 @@ public class PlayerActions : MonoBehaviour
         if (other.tag == "LoadNext")
         {
             PortalLogic pl = other.GetComponent<PortalLogic>();
+            if (pl.NextLevelType == LevelType.None) //Non Additive for GameWin
+                SceneManager.LoadScene((int)pl.LevelToLoad);
+
             SceneManager.LoadScene((int)pl.LevelToLoad, LoadSceneMode.Additive);
 
             //Load short Intro of Next Level in Tip Panel
