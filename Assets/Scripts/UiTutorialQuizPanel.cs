@@ -46,7 +46,6 @@ public class UiTutorialQuizPanel : MonoBehaviour
             //Correct
             //Debug.Log("CORRECT!");
             //Sound
-            AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
             int u = UnityEngine.Random.Range(3, 5);
             TutorialManager.Instance.IncreaseContribution(u);
             if (frontLinerTrigger != null)
@@ -61,7 +60,6 @@ public class UiTutorialQuizPanel : MonoBehaviour
             //Wrong
             //Debug.Log("WRONG!");
             //Sound
-            AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
             TutorialManager.Instance.IncreaseMutation(1);
             OnAnsweredWrongTutorial?.Invoke(1.6f);
         }

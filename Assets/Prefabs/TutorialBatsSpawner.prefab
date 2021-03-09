@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2409735357486162094}
-  - component: {fileID: 7264749078898133372}
+  - component: {fileID: 3904034643863376001}
   m_Layer: 0
   m_Name: TutorialBatsSpawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7264749078898133372
+--- !u!114 &3904034643863376001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 353010726363209039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6106b4e6820a034c8b73a3e58f91272, type: 3}
+  m_Script: {fileID: 11500000, guid: a10d984d63bcd5a4d90f4446af09462e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartWait: 3
@@ -48,14 +48,17 @@ MonoBehaviour:
   MaxSpawns: 3
   BatPrefab: {fileID: 5002828068029114629, guid: bedf4e05adbfdd74791755c42d65ba54,
     type: 3}
+  PortalPrefab: {fileID: 979755469291455666, guid: cf60b6899eb4cdd40a19a90fc0de3eea,
+    type: 3}
+  FadingTMPPrefab: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
+    type: 3}
   Pos:
   - SpawnLocation: North
-    SpawnPosition: {x: 0, y: 0.5, z: 28}
+    SpawnPosition: {x: 0, y: 0.5, z: 25}
   - SpawnLocation: East
     SpawnPosition: {x: 15, y: 0.5, z: 18}
   - SpawnLocation: West
     SpawnPosition: {x: -15, y: 0.5, z: 18}
-  PortalPrefab: {fileID: 979755469291455666, guid: cf60b6899eb4cdd40a19a90fc0de3eea,
-    type: 3}
-  NextPortalLocation: {x: 5, y: 0.8, z: 27}
+  NextPortalLocation: {x: 5, y: 0.9, z: 27}
   NextLevel: 0
+  NextLevelType: 0

@@ -75,7 +75,15 @@ public class CivilianLogic : MonoBehaviour
     }
     public void GetInfected()
     {
-        GameManager.Instance.IncreaseMutation(1);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.IncreaseMutation(1);
+        }
+        else
+        {
+            TutorialManager.Instance.IncreaseMutation(1);
+        }
+
         InfectionFX.SetActive(true);
         CivilianCollider.enabled = false;
         isInfected = true;

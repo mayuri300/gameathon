@@ -89,7 +89,7 @@ public class AudioManager : MonoBehaviour
         {
             Vector3 at;
             if (pos == null)
-                at = Camera.main.GetComponent<AudioListener>().transform.position;
+                at = Camera.main.transform.position;
             else
                 at = pos.Value;
             AudioClip c = data.clip;

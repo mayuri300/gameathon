@@ -20,7 +20,6 @@ public class TutorialManager : MonoBehaviour
     private void OnDestroy()
     {
         Instance = null;
-        Destroy(this.gameObject);
     }
 
     public bool isSafe = false;

@@ -61,7 +61,7 @@ public class TutorialPlayerActions : MonoBehaviour
         //Tips Trigger
         if(other.tag == "Tip")
         {
-            AudioManager.Instance.PlaySound(SoundEffectsType.PopUP);
+            //AudioManager.Instance.PlaySound(SoundEffectsType.PopUP);
             TipEnterPanel.SetActive(true);
             Ttype = other.GetComponent<TipsLogic>().TipType;
             BoxCollider k = other.GetComponent<TipsLogic>().Collider;
@@ -71,7 +71,7 @@ public class TutorialPlayerActions : MonoBehaviour
         //Bats Trigger
         if (other.tag == "Bat")
         {
-            AudioManager.Instance.PlaySound(SoundEffectsType.Infected,this.transform.position);
+            //AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
             TutorialManager.Instance.IncreaseMutation(1);
             Destroy(other.gameObject);
         }
@@ -82,7 +82,7 @@ public class TutorialPlayerActions : MonoBehaviour
         }
         if (other.tag == "HP")
         {
-            AudioManager.Instance.PlaySound(SoundEffectsType.Completed);
+            //AudioManager.Instance.PlaySound(SoundEffectsType.Completed);
             TutorialManager.Instance.HP += 3f;
             Destroy(other.gameObject);
         }
@@ -106,7 +106,7 @@ public class TutorialPlayerActions : MonoBehaviour
             return;
         else
         {
-            AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
+            //AudioManager.Instance.PlaySound(SoundEffectsType.Attack);
             myAnim.SetTrigger("attack");
             TutorialManager.Instance.IncreaseContribution(-1);
             inputMode = InputType.None;
@@ -116,12 +116,6 @@ public class TutorialPlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))  //TODO REmove Later after DEPLOYMENT
-        {
-            myAnim.SetTrigger("attack");
-            AudioManager.Instance.PlaySound(SoundEffectsType.Attack, this.transform.position);
-
-        }
         #region MOVEMENTLOGIC
         if (inputMode == InputType.Keyboard) //TODO REmove Later after DEPLOYMENT
         {
@@ -183,7 +177,7 @@ public class TutorialPlayerActions : MonoBehaviour
         }
         if (infectionSpeed <= 0)
         {
-            AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
+            //AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
             Infection.gameObject.SetActive(false);
             InfectionTimerFill.gameObject.SetActive(false);
             infectionSpeed = 1f;
