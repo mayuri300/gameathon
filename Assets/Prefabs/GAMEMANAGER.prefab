@@ -72,7 +72,7 @@ MonoBehaviour:
   InstantiatedQuizData:
     Type: 0
     quiz: {fileID: 0}
-  Level1Spawnner: {x: -18, y: 0.7, z: 55}
+  Level1Spawnner: {x: -27, y: 0.7, z: 56}
   Level2Spawnner: {x: 3.8, y: 0.8, z: 217}
   Portal: {fileID: 979755469291455666, guid: cf60b6899eb4cdd40a19a90fc0de3eea, type: 3}
   FadePanel: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
