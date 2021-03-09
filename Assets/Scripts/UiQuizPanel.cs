@@ -67,7 +67,7 @@ public class UiQuizPanel : MonoBehaviour
             //WRONG ANSWER LOGIC
             AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
             GameManager.Instance.IncreaseMutation(1);
-            OnAnsweredWrong?.Invoke(1.6f);
+            OnAnsweredWrong?.Invoke(1.65f);
             MyData.SpreadRadius++;
         }
         Destroy(this.gameObject);

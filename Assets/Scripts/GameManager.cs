@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     [Header("Quiz and Tip GameObjects")]
     public GameObject QuizPanel;
     public GameObject TipPanel;
-    [HideInInspector]
     public GameObject WorldCanvas;
     [HideInInspector]
     public QuizData InstantiatedQuizData = null;
