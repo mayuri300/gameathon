@@ -758,6 +758,8 @@ MonoBehaviour:
   - {fileID: 5363301301154452201}
   - {fileID: 3949323065330860943}
   correctAnswer: 0
+  FadingPanel: {fileID: 2710274971349636918, guid: d3d6396234e2258459abfabf0a36c6b7,
+    type: 3}
 --- !u!1 &7206164565312641739
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class TutorialManager : MonoBehaviour
         Instance = null;
     }
 
+    public Button ExitBTN;
     public bool isSafe = false;
     public Image HPFill;
     public Canvas TutorialCanvas;
@@ -45,7 +46,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ExitBTN.onClick.AddListener(QuitTutorial);   
     }
     public void IncreaseContribution(int amount)
     {
@@ -70,6 +71,10 @@ public class TutorialManager : MonoBehaviour
                 panel.Options[i].GetComponentInChildren<TMP_Text>().text = InstantiatedQuizData.quiz.Options[i];
             }
         }
+    }
+    public void QuitTutorial()
+    {
+        SceneManager.LoadScene((int)GameLevels.MainMenu);
     }
     public void InstantiateTips(QuestionType type)
     {

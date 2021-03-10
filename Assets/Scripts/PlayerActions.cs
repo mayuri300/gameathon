@@ -175,6 +175,9 @@ public class PlayerActions : MonoBehaviour
         if (infectionSpeed <= 0)
         {
             AudioManager.Instance.PlaySound(SoundEffectsType.Infected);
+            FadingTMP ftp = FadePanel.GetComponent<FadingTMP>();
+            ftp.Details.text = "You Infected a Civilian, Please follow Social Distancing!";
+            Instantiate(FadePanel, GameManager.Instance.WorldCanvas.transform);
             Infection.gameObject.SetActive(false);
             InfectionTimerFill.gameObject.SetActive(false);
             infectionSpeed = 1f;

@@ -14,6 +14,7 @@ public class UiQuizPanel : MonoBehaviour
     private BoxCollider frontLinerTrigger;
     public static Action<float> OnAnsweredWrong;
     public static Action OnCompleteAllQuiz;
+    public GameObject FadingPanel;
     private void Awake()
     {
         Core.SubscribeEvent("OnSendTrigger", OnSendTrigger);
@@ -67,6 +68,9 @@ public class UiQuizPanel : MonoBehaviour
             //WRONG ANSWER LOGIC
             AudioManager.Instance.PlaySound(SoundEffectsType.Wrong);
             GameManager.Instance.IncreaseMutation(1);
+            FadingTMP ftp = FadingPanel.GetComponent<FadingTMP>();
+            ftp.Details.text = "Your Spread Radius has Increased!!";
+            Instantiate(FadingPanel, GameManager.Instance.WorldCanvas.transform);
             OnAnsweredWrong?.Invoke(1.65f);
             MyData.SpreadRadius++;
         }
