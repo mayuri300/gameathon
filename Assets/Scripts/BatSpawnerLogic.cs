@@ -22,8 +22,7 @@ public class BatSpawnerLogic : MonoBehaviour
     private float spawnCount = 0;
     public float SpawnCount { get { return spawnCount; } }
 
-    private bool finishedSpawns = false;
-    public bool FinishedSpawns { get { return finishedSpawns; } }
+    private bool killedAllBats = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,21 +39,11 @@ public class BatSpawnerLogic : MonoBehaviour
             int k = Random.Range(0, Pos.Length - 1);
             this.transform.position = Pos[k].SpawnPosition;
             //Debug.Log("Spawnning From : " + Pos[k].SpawnLocation);
-            ftp.Details.text = "A Bat has spawnned from : " + Pos[k].SpawnLocation;
+            ftp.Details.text = "A Bat will spawn from : " + Pos[k].SpawnLocation;
             Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
             yield return new WaitForSeconds(SpawnDelay);
             Spawn();
          }
-        finishedSpawns = true;
-        //Spawn Next Portal on specified location here after spawnning
-        PortalLogic pl = PortalPrefab.GetComponent<PortalLogic>();
-        pl.LevelToLoad = NextLevel;
-        pl.NextLevelType = this.NextLevelType;
-        pl.NextLevelType = LevelType.QuizLevel;
-        ftp.Details.text = "Portal has appeared towards north, kill all Bats and Proceed!.";
-        Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
-        Instantiate(PortalPrefab, NextPortalLocation, PortalPrefab.transform.rotation);
-        Destroy(this.gameObject);
     }
     public void Spawn()
     {
@@ -63,6 +52,25 @@ public class BatSpawnerLogic : MonoBehaviour
     }
     private void Update()
     {
+        if (MyData.BatsKilled >= MaxSpawns)
+        {
+            killedAllBats = true;
+        }
+        else
+            killedAllBats = false;
+
+        if (killedAllBats)
+        {
+            PortalLogic pl = PortalPrefab.GetComponent<PortalLogic>();
+            pl.LevelToLoad = NextLevel;
+            pl.NextLevelType = this.NextLevelType;
+            pl.NextLevelType = LevelType.QuizLevel;
+            ftp.Details.text = "Portal has appeared towards north, Please Proceed to Next Level!.";
+            Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
+            Instantiate(PortalPrefab, NextPortalLocation, PortalPrefab.transform.rotation);
+            MyData.BatsKilled = 0;
+            Destroy(this.gameObject);
+        }
     }
 }
 [System.Serializable]

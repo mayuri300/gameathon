@@ -16,6 +16,7 @@ public class BatLogic : MonoBehaviour
     }
     private void OnDestroy()
     {
+        MyData.BatsKilled++;
     }
     void Start()
     {

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     [Header("UI Stuff")]
     public TMP_Text MutationText;
     public TMP_Text ContributionText;
+    public Image[] QuizCompleteMarks;
     [Header("QuizData")]
     public QuizData[] Quiz;
     [Header("Quiz and Tip GameObjects")]
@@ -62,6 +63,8 @@ public class GameManager : MonoBehaviour
     public Vector3 Level2Spawnner;
     public GameObject Portal;
     public GameObject FadePanel;
+
+    public int CorrectlyAnsweredCount = 0;
 
     public void IncreaseMutation(int amount)
     {
@@ -90,6 +93,11 @@ public class GameManager : MonoBehaviour
                 panel.Options[i].GetComponentInChildren<TMP_Text>().text = InstantiatedQuizData.quiz.Options[i];
             }
         }
+    }
+    public void QuizAnsweredUi()
+    {
+        QuizCompleteMarks[CorrectlyAnsweredCount].gameObject.SetActive(true);
+        CorrectlyAnsweredCount++;
     }
     public void InstantiateTips(QuestionType type)
     {

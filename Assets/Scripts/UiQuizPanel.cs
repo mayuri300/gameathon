@@ -11,7 +11,6 @@ public class UiQuizPanel : MonoBehaviour
     public Button[] Options;
     public int correctAnswer;
 
-
     private BoxCollider frontLinerTrigger;
     public static Action<float> OnAnsweredWrong;
     public static Action OnCompleteAllQuiz;
@@ -61,6 +60,7 @@ public class UiQuizPanel : MonoBehaviour
                 //show indicator
                 OnCompleteAllQuiz?.Invoke();
             }
+            GameManager.Instance.QuizAnsweredUi();
         }
         else
         {

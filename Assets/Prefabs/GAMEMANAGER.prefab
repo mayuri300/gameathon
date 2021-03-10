@@ -45,6 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MutationText: {fileID: 0}
   ContributionText: {fileID: 0}
+  QuizCompleteMarks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Quiz:
   - Type: 0
     quiz: {fileID: 11400000, guid: 4a43a4adbfd7b2547829dcc61fa7320c, type: 2}

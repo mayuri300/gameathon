@@ -32,6 +32,7 @@ public class GameOverLogic : MonoBehaviour
         MyData.SpreadRadius = 3f;
         //correctely answered to 0
         MyData.CorrectAnswersCount = 0;
+        MyData.BatsKilled = 0;
     }
     public void QuitGame()
     {

@@ -8,5 +8,6 @@ public static class MyData
     public static float SFXVolume = 1f;
     public static int CorrectAnswersCount = 0; //Reset when clicked on Restart game BTN
     public static float SpreadRadius = 3f; //Reset when clicked on Restart game BTN
+    public static int BatsKilled = 0;
 
 }
