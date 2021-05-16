@@ -49,12 +49,14 @@ public class GameManager : MonoBehaviour
     [Header("UI Stuff")]
     public TMP_Text MutationText;
     public TMP_Text ContributionText;
+    public Button SettingsBTN;
     public Image[] QuizCompleteMarks;
     [Header("QuizData")]
     public QuizData[] Quiz;
     [Header("Quiz and Tip GameObjects")]
     public GameObject QuizPanel;
     public GameObject TipPanel;
+    public GameObject SettingsPanel;
     public GameObject WorldCanvas;
     [HideInInspector]
     public QuizData InstantiatedQuizData = null;
@@ -98,6 +100,11 @@ public class GameManager : MonoBehaviour
     {
         QuizCompleteMarks[CorrectlyAnsweredCount].gameObject.SetActive(true);
         CorrectlyAnsweredCount++;
+    }
+
+    public void ShowSettings()
+    {
+        Instantiate(SettingsPanel, WorldCanvas.transform);
     }
     public void InstantiateTips(QuestionType type)
     {
@@ -143,4 +150,5 @@ public class QuizData
 {
     public QuestionType Type;
     public QuizScriptable quiz;
+    public GameObject TipGameObject;
 }

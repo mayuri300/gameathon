@@ -36,6 +36,7 @@ public class PlayerActions : MonoBehaviour
     private Vector3 movementVector;
     private Vector3 movementDirection;
     private Animator myAnim;
+    private Rigidbody myRbdy;
     private int CivilianLayer { get {  return 1 << LayerMask.NameToLayer("Civilian"); } }
     private float smoothVelocity;
     private float horizontal;
@@ -58,6 +59,7 @@ public class PlayerActions : MonoBehaviour
         AttackBTN.interactable = false;
         DisableIndicator();
         GameObject.FindObjectOfType<GameManager>();
+        myRbdy = this.GetComponent<Rigidbody>();
     }
     public void EnableIndication()
     {
@@ -246,7 +248,8 @@ public class PlayerActions : MonoBehaviour
          myAnim.SetFloat("speed", movementDirection.magnitude);
         if (movementDirection.magnitude > 0f)
         {
-             this.transform.position += movementVector;
+            //this.transform.position += movementVector;
+            myRbdy.velocity = movementVector;
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         }

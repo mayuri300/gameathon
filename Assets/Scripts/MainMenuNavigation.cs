@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class MainMenuNavigation : MonoBehaviour
 {
     public Button PlayGameBTN;
-    public Button ExitGameBTN;
+    //public Button ExitGameBTN; // Replace with phone back function
     public Button TutorialBTN;
     public Button SettingsBTN;
     public GameObject SettingsPanel;
+    public GameObject QuitPanel;
     public Image LoadingPanel;
     public Text LoadingProgressText;
     public Text LoadingTipText;
@@ -25,14 +26,19 @@ public class MainMenuNavigation : MonoBehaviour
     void Start()
     {
         PlayGameBTN.onClick.AddListener(PlayGame);
-        ExitGameBTN.onClick.AddListener(ExitGame);
         TutorialBTN.onClick.AddListener(LoadTutorial);
         SettingsBTN.onClick.AddListener(ShowSettings);
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Instantiate(QuitPanel, this.transform);
+        }
     }
     private void OnDestroy()
     {
         PlayGameBTN.onClick.RemoveAllListeners();
-        ExitGameBTN.onClick.RemoveAllListeners();
         TutorialBTN.onClick.RemoveAllListeners();
         SettingsBTN.onClick.RemoveAllListeners();
     }
@@ -76,9 +82,5 @@ public class MainMenuNavigation : MonoBehaviour
             }
             yield return null;
         }
-    }
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 }

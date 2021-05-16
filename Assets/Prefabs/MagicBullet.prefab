@@ -9440,7 +9440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bad1b2a576a4364680592e84afc0db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 6
+  Speed: 8
   ExplosionFX: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   HPPrefab: {fileID: 1202522996400206, guid: f87e7926fd589094b8a269e14b8bea5e, type: 3}
 --- !u!1 &3674665649387367021

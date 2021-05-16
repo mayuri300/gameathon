@@ -43,6 +43,7 @@ public class UiQuizPanel : MonoBehaviour
     {
         string k = butt.gameObject.name;
         string m = GameManager.Instance.InstantiatedQuizData.quiz.CorrectOption.ToString();
+        GameObject tipObj = GameManager.Instance.InstantiatedQuizData.TipGameObject;
         if(k == m)
         {
             //ANSWER CORRECT LOGIC
@@ -62,6 +63,8 @@ public class UiQuizPanel : MonoBehaviour
                 OnCompleteAllQuiz?.Invoke();
             }
             GameManager.Instance.QuizAnsweredUi();
+            if (tipObj != null)
+                Destroy(tipObj);
         }
         else
         {
