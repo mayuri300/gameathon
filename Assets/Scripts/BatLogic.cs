@@ -28,7 +28,7 @@ public class BatLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 direction = (TargetPlayer.position - this.transform.position).normalized;
         myRbdy.velocity = direction * MoveSpeed * Time.deltaTime;

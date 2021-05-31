@@ -248,8 +248,7 @@ public class PlayerActions : MonoBehaviour
          myAnim.SetFloat("speed", movementDirection.magnitude);
         if (movementDirection.magnitude > 0f)
         {
-            //this.transform.position += movementVector;
-            myRbdy.velocity = movementVector;
+            this.transform.position += movementVector;           
             this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         }

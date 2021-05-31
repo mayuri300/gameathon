@@ -9904,7 +9904,7 @@ PrefabInstance:
     - target: {fileID: 1353537080622371064, guid: 511ba5fd1285db64eae70188ebe6d339,
         type: 3}
       propertyPath: Speed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1353537080622371064, guid: 511ba5fd1285db64eae70188ebe6d339,
         type: 3}
@@ -9958,8 +9958,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1353537080622371065, guid: 511ba5fd1285db64eae70188ebe6d339,
         type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353537080622371065, guid: 511ba5fd1285db64eae70188ebe6d339,
+        type: 3}
       propertyPath: m_CollisionDetection
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426887044619983760, guid: 511ba5fd1285db64eae70188ebe6d339,
         type: 3}
