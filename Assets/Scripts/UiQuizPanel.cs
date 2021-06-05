@@ -15,6 +15,7 @@ public class UiQuizPanel : MonoBehaviour
     public static Action<float> OnAnsweredWrong;
     public static Action OnCompleteAllQuiz;
     public GameObject FadingPanel;
+    private GameObject TipObj;
     private void Awake()
     {
         Core.SubscribeEvent("OnSendTrigger", OnSendTrigger);
@@ -28,7 +29,8 @@ public class UiQuizPanel : MonoBehaviour
 
     private void OnSendTrigger(object sender, object[] args)
     {
-          frontLinerTrigger = (BoxCollider)args[0];
+        frontLinerTrigger = (BoxCollider)args[0];
+        TipObj = (GameObject)args[1];
     }
 
     private void OnDestroy()
@@ -43,7 +45,7 @@ public class UiQuizPanel : MonoBehaviour
     {
         string k = butt.gameObject.name;
         string m = GameManager.Instance.InstantiatedQuizData.quiz.CorrectOption.ToString();
-        GameObject tipObj = GameManager.Instance.InstantiatedQuizData.TipGameObject;
+
         if(k == m)
         {
             //ANSWER CORRECT LOGIC
@@ -63,8 +65,9 @@ public class UiQuizPanel : MonoBehaviour
                 OnCompleteAllQuiz?.Invoke();
             }
             GameManager.Instance.QuizAnsweredUi();
-            if (tipObj != null)
-                Destroy(tipObj);
+            if (TipObj != null)
+                Destroy(TipObj);
+
         }
         else
         {

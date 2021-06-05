@@ -92,7 +92,7 @@ public class PlayerActions : MonoBehaviour
             kk.RemoveIndicator();
             GameManager.Instance.InstantiateQuiz(Qtype);
             AudioManager.Instance.PlaySound(SoundEffectsType.PopUP, this.transform.position);
-            Core.BroadcastEvent("OnSendTrigger", this, other.GetComponent<FrontLineTrigger>().QuizTrigger);
+            Core.BroadcastEvent("OnSendTrigger", this, other.GetComponent<FrontLineTrigger>().QuizTrigger,kk.TipObject);
         }
         if (other.tag == "Tip")
         {

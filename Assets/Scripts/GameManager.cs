@@ -150,5 +150,4 @@ public class QuizData
 {
     public QuestionType Type;
     public QuizScriptable quiz;
-    public GameObject TipGameObject;
 }
