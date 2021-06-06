@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Quiz5
   m_EditorClassIdentifier: 
   Type: 5
-  Question: Name a clinical trial in which blood is transfused from recovered COVID-19
-    patients to a coronavirus patient who is in critical condition?
+  Question: How many days difference should be there between two doses of vaccine?
   Options:
-  - Solidarity
-  - 'Plasma Therapy  '
-  - 'Remdesivir '
-  - Hydroxychloroquine
-  Tips: Plasma Therapy is a clinical trial in which blood is transfused from recovered
-    COVID-19 patients to a coronavirus patient .
+  - 10 days
+  - 28 days
+  - 40 days
+  Tips: Two doses of the vaccine, 28 days apart, need to be taken by an individual
+    to complete the vaccination schedule. Protective levels of antibodies are generally
+    developed two weeks after receiving the 2nd dose of Covid-19 vaccine.
   CorrectOption: 1

@@ -27,7 +27,7 @@ public class UiShopPanelLogic : MonoBehaviour
     private void DecreaseRadius()
     {
         //Decrease Player infection Radius and reduce CP by 1
-        if(GameManager.Instance.ContributionPoints < 1)
+        if(GameManager.Instance.ContributionPoints < 3)
         {
             //Spawn a fader text stating not enough CP
             GameObject go = Instantiate(FadingTMP, GameManager.Instance.WorldCanvas.transform);
@@ -41,14 +41,15 @@ public class UiShopPanelLogic : MonoBehaviour
             //Also decreease Particle size
             OnDecreaseRadius?.Invoke(-1.65f);
             MyData.SpreadRadius--;
-            GameManager.Instance.DecreaseContribution(1);
+            GameManager.Instance.DecreaseContribution(3);
+            AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
         }
     }
 
     private void IncreaseSpeed()
     {
         //Increase Speed and reduce CP by 1
-        if (GameManager.Instance.ContributionPoints < 1)
+        if (GameManager.Instance.ContributionPoints < 3)
         {
             //Spawn a fader text saying not enough CP
             GameObject go = Instantiate(FadingTMP, GameManager.Instance.WorldCanvas.transform);
@@ -59,7 +60,8 @@ public class UiShopPanelLogic : MonoBehaviour
         else
         {
             PlayerActions.IncreaseMoveSpeed();
-            GameManager.Instance.DecreaseContribution(1);
+            GameManager.Instance.DecreaseContribution(3);
+            AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
         }
     }
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quiz0
   m_EditorClassIdentifier: 
   Type: 0
-  Question: WHO on 11 feb 2020 announced an official name for the disease that is
-    causing the 2019 novel coronavirus outbreak? what is the new name of the disease
+  Question: WHO, on 11th feb 2020 announced an official name for the disease that
+    is causing the 2019 novel coronavirus outbreak? what is the new name of the disease?
   Options:
   - COVID-19
   - COnV-20

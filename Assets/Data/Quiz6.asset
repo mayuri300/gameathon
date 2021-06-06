@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Quiz6
   m_EditorClassIdentifier: 
   Type: 6
-  Question: From where coronavirus got its name?
+  Question: What is the name of the vaccine that is being manufactured by Serum Institute
+    of India, Pune?
   Options:
-  - 'Due to their leaf-like projections.  '
-  - Due to their surface structure of bricks.
-  - Due to their crown-like projections.
+  - Covax
+  - Sputnik - V
+  - Covishield
   - None of the above
-  Tips: The virus resembles a crown when viewed under an electron microscope.
+  Tips: Covishield Vaccine has been developed by AstraZeneca with Oxford university
+    in the UK and is being manufactured by the Serum Institute of India (SII) in
+    Pune.
   CorrectOption: 2

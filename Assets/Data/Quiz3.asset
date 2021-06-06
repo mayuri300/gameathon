@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Quiz3
   m_EditorClassIdentifier: 
   Type: 3
-  Question: which cells are found in COVID-19 patients 'bode well' for long term
-    immunity?
+  Question: Everyone has been talking about social distancing as a method to prevent
+    the spread of Covid-19. What distance should I maintain from others?
   Options:
-  - 'P-cell  '
-  - 'D-Cell '
-  - 'T-Cell '
-  - Endothelial Cells
-  Tips: T cells are known as immune warriors help us fight  viruses.
+  - 1 Foot
+  - 2 Foot
+  - 3 Foot
+  Tips: It is important to maintain a distance of 3 feet from people. It can spread
+    from droplets of an infected person via cough, sneeses etx.
   CorrectOption: 2

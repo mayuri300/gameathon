@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Quiz4
   m_EditorClassIdentifier: 
   Type: 4
-  Question: Name the vaccine that is jointly developed by the German company BioNTech
-    and US pharma giant Pfizer for COVID-19?
+  Question: Can I use Antibiotics to fight Covid - 19?
   Options:
-  - 'BNT162  '
-  - PICOVACC
-  - 'Both A and B '
-  - ' Neither A nor B'
-  Tips: BNT162 is jointly developed by the German company BioNTech and US pharma
-    giant Pfizer
-  CorrectOption: 0
+  - Yes, antibiotics strengthen the body's imune system and can work against Covid-19.
+  - Yes, antibiotics work on bacterial infections and Covid-19.
+  - No, antibiotics work only on bacterial infections
+  - No, because WHO has banned their use for Covid-19.
+  Tips: Antibiotics work only against bacterial infections and do not work against
+    viruses. Covid-19 is a viral infection.
+  CorrectOption: 2

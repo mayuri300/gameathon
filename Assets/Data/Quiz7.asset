@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Quiz7
   m_EditorClassIdentifier: 
   Type: 7
-  Question: Who launched an antiviral drug Favipiravir?
+  Question: Which portal can be used for vaccination in India?
   Options:
-  - BioNTech
-  - Pfizer
-  - 'Glenmark Pharmaceuticals '
-  Tips: Glenmark Pharmaceuticals under the brand name FabiFlu has launched an antiviral
-    drug Favipiravir.
-  CorrectOption: 2
+  - Covid Portal
+  - Co-Win Portal
+  - Vaccine-19 Portal
+  Tips: You need to login to the Co-Win Portal. You can also register for vaccination
+    through Aarogya Setu App.
+  CorrectOption: 1

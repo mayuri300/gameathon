@@ -50,7 +50,7 @@ public class UiQuizPanel : MonoBehaviour
         {
             //ANSWER CORRECT LOGIC
             AudioManager.Instance.PlaySound(SoundEffectsType.Correct);
-            int u = UnityEngine.Random.Range(3, 5);
+            int u = UnityEngine.Random.Range(2, 5);
             GameManager.Instance.IncreaseContribution(u);
             if (frontLinerTrigger != null)
             {
