@@ -39,7 +39,7 @@ public class BatSpawnerLogic : MonoBehaviour
             int k = Random.Range(0, Pos.Length - 1);
             this.transform.position = Pos[k].SpawnPosition;
             //Debug.Log("Spawnning From : " + Pos[k].SpawnLocation);
-            ftp.Details.text = "A Bat will spawn from : " + Pos[k].SpawnLocation;
+            ftp.Details.text = "A Virus will spawn from : " + Pos[k].SpawnLocation;
             Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
             yield return new WaitForSeconds(SpawnDelay);
             Spawn();

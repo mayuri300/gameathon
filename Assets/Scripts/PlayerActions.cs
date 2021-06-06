@@ -15,7 +15,7 @@ public class PlayerActions : MonoBehaviour
     public Image TipEnterPanel;
     public Button AttackBTN;
     [Header("Player Data")]
-    public float Speed;
+    //public float Speed;
     public float RotationSpeed;
     public float SenseRadius;
     public InputType inputMode;
@@ -24,6 +24,7 @@ public class PlayerActions : MonoBehaviour
     private float tickTimer = 2f;
     private float maxHP = 100f;
     public float MaxHP { get { return maxHP; } set { maxHP = value; } }
+    private static float MoveSpeed = 5f;
     [Header("Prefabs")]
     public GameObject MagicBullet;
     public Transform NozzlePos;
@@ -69,15 +70,21 @@ public class PlayerActions : MonoBehaviour
     {
         PortalIndicator.SetActive(false);
     }
+    public static void IncreaseMoveSpeed()
+    {
+        MoveSpeed += 1;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        UiShopPanelLogic.OnDecreaseRadius += IncreaseSpreadFXRadius;
         UiQuizPanel.OnAnsweredWrong += IncreaseSpreadFXRadius;
         UiQuizPanel.OnCompleteAllQuiz += EnableIndication;
     }
 
     private void OnDestroy()
     {
+        UiShopPanelLogic.OnDecreaseRadius -= IncreaseSpreadFXRadius;
         UiQuizPanel.OnAnsweredWrong -= IncreaseSpreadFXRadius;
         UiQuizPanel.OnCompleteAllQuiz -= EnableIndication;
     }
@@ -239,7 +246,7 @@ public class PlayerActions : MonoBehaviour
             horizontal = 0f;
             vertical = 0f;
         }
-            movementVector = new Vector3(horizontal, 0, vertical) * Time.deltaTime * Speed;
+            movementVector = new Vector3(horizontal, 0, vertical) * Time.deltaTime * MoveSpeed;
             movementDirection = movementVector.normalized;
 
         float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;

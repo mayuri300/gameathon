@@ -17,7 +17,7 @@ public class LvlStub : MonoBehaviour
             Instantiate(BatSpawnnerPrefab, this.transform.position, Quaternion.identity);
             BatSpawnerLogic bsl = BatSpawnnerPrefab.GetComponent<BatSpawnerLogic>();
             FadingTMP ftp = FadingTMPPrefab.GetComponent<FadingTMP>();
-            ftp.Details.text = "Bats will start spawnning in : " + bsl.StartWait + " seconds";
+            ftp.Details.text = "Virus will start spawnning in : " + bsl.StartWait + " seconds";
             Instantiate(FadingTMPPrefab, GameManager.Instance.WorldCanvas.transform);
             this.GetComponent<BoxCollider>().enabled = false;
         }

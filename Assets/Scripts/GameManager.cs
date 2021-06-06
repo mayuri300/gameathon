@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text MutationText;
     public TMP_Text ContributionText;
     public Button SettingsBTN;
+    public Button ShopBTN;
     public Image[] QuizCompleteMarks;
     [Header("QuizData")]
     public QuizData[] Quiz;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
     public GameObject QuizPanel;
     public GameObject TipPanel;
     public GameObject SettingsPanel;
+    public GameObject ShopPanel;
     public GameObject WorldCanvas;
     [HideInInspector]
     public QuizData InstantiatedQuizData = null;
@@ -82,6 +84,11 @@ public class GameManager : MonoBehaviour
         contributionPoints += amount;
         ContributionText.text = string.Format("{0}", contributionPoints);
     }
+    public void DecreaseContribution(int amount)
+    {
+        contributionPoints -= amount;
+        ContributionText.text = string.Format("{0}", contributionPoints);
+    }
     public  void InstantiateQuiz(QuestionType type) //Called on Trigger Enter
     {
         GameObject InstantiatedQuiz = Instantiate(QuizPanel, WorldCanvas.transform);
@@ -105,6 +112,10 @@ public class GameManager : MonoBehaviour
     public void ShowSettings()
     {
         Instantiate(SettingsPanel, WorldCanvas.transform);
+    }
+    public void ShowShop()
+    {
+        Instantiate(ShopPanel, WorldCanvas.transform);
     }
     public void InstantiateTips(QuestionType type)
     {
